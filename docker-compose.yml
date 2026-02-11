@@ -1,0 +1,53 @@
+# 多源并行录制：Polymarket / Binance / Chainlink / 0x8dxd Tracker / Discovery 循环
+# 用法: 先运行 discovery 生成 targets.json，再 docker compose up -d
+# 数据挂载 ./data；targets.json 需挂载以便 polymarket 与 discovery_loop 使用
+
+services:
+  discovery_loop:
+    build: .
+    command: python -u discovery_loop.py --targets /app/targets.json --interval 600
+    volumes:
+      - ./targets.json:/app/targets.json
+      - ./data:/app/data
+    environment:
+      - HTTP_PROXY=${HTTP_PROXY:-http://host.docker.internal:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://host.docker.internal:7897}
+    restart: unless-stopped
+
+  polymarket:
+    build: .
+    command: python -u recorder.py --targets /app/targets.json --output-dir /app/data/polymarket
+    volumes:
+      - ./targets.json:/app/targets.json:ro
+      - ./data:/app/data
+    environment:
+      - HTTP_PROXY=${HTTP_PROXY:-http://host.docker.internal:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://host.docker.internal:7897}
+    restart: unless-stopped
+
+  binance:
+    build: .
+    command: python -u binance_recorder.py --output-dir /app/data/binance
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  chainlink:
+    build: .
+    command: python -u chainlink_recorder.py --output-dir /app/data/chainlink --poll-interval 0.2 --rpc ${POLYGON_RPC_URL:-https://polygon-rpc.com}
+    volumes:
+      - ./data:/app/data
+    environment:
+      - POLYGON_RPC_URL=${POLYGON_RPC_URL:-https://polygon-rpc.com}
+    restart: unless-stopped
+
+  tracker_0x8dxd:
+    build: .
+    command: python -u tracker_0x8dxd.py --output-dir /app/data/tracker_0x8dxd --interval 30
+    volumes:
+      - ./data:/app/data
+    environment:
+      - HTTP_PROXY=${HTTP_PROXY:-http://host.docker.internal:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://host.docker.internal:7897}
+      - TRACKER_USER_ADDRESS=${TRACKER_USER_ADDRESS:-0x8dxd}
+    restart: unless-stopped

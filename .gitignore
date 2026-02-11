@@ -1,0 +1,4 @@
+data/
+validate_report.txt
+__pycache__/
+*.log
