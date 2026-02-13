@@ -29,8 +29,8 @@ if sys.stdout and hasattr(sys.stdout, "buffer"):
 if sys.stderr and hasattr(sys.stderr, "buffer"):
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, line_buffering=True)
 
-# 连接无数据超过此秒数则主动重连
-WATCHDOG_IDLE_SEC = 60
+# 连接无数据超过此秒数则主动重连（低活跃市场可能较久才收到首条 book，适当放宽以减少“只录到少数市场”）
+WATCHDOG_IDLE_SEC = 180
 # 心跳写入间隔（秒）
 HEARTBEAT_INTERVAL_SEC = 60
 # 按小时轮转文件

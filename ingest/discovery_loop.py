@@ -10,15 +10,21 @@ import sys
 import time
 from pathlib import Path
 
-# 使用项目内 discovery
+# 兼容从项目根或 /app 运行：确保 ingest 在 path 中以便 import discovery
+_ingest_dir = Path(__file__).resolve().parent
+if str(_ingest_dir) not in sys.path:
+    sys.path.insert(0, str(_ingest_dir))
 from discovery import MarketDiscovery
 
 TARGETS_FILE = "targets.json"
 INTERVAL_SEC = 60
+# 单文件 bind mount 下 rename 易报 Errno 16，重试次数与间隔
+ATOMIC_WRITE_RETRIES = 5
+ATOMIC_WRITE_RETRY_DELAY_SEC = 2
 
 
 def atomic_write_json(payload: list, output_path: str) -> None:
-    """原子写 JSON：先写临时文件，fsync 后 replace。"""
+    """原子写 JSON：先写临时文件，fsync 后 replace；遇 Errno 16 (Device busy) 时重试。"""
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp_path = path.with_name(f".{path.name}.tmp")
@@ -26,7 +32,21 @@ def atomic_write_json(payload: list, output_path: str) -> None:
         json.dump(payload, f, indent=2, ensure_ascii=False)
         f.flush()
         os.fsync(f.fileno())
-    os.replace(tmp_path, path)
+    last_err = None
+    for attempt in range(ATOMIC_WRITE_RETRIES):
+        try:
+            os.replace(tmp_path, path)
+            return
+        except OSError as e:
+            last_err = e
+            if e.errno == 16:  # Errno 16: Device or resource busy（常见于单文件 bind mount）
+                if attempt < ATOMIC_WRITE_RETRIES - 1:
+                    time.sleep(ATOMIC_WRITE_RETRY_DELAY_SEC)
+                    continue
+                print(f"  [错误] [Errno 16] 重试 {ATOMIC_WRITE_RETRIES} 次后仍无法覆盖 {path}，请改用 data 目录路径（如 /app/data/targets.json）", file=sys.stderr)
+            raise
+    if last_err:
+        raise last_err
 
 
 def write_health_marker(targets_path: str) -> None:

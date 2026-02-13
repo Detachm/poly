@@ -1,22 +1,20 @@
 # 多源并行录制：Polymarket / Binance / Chainlink / 0x8dxd Tracker / Discovery 循环
-# 用法: 先运行 discovery 生成 targets.json，再 docker compose up -d
-# 数据挂载 POLY_DATA_DIR（默认 /vault/core/data/poly）；targets.json 需挂载以便 polymarket 与 discovery_loop 使用
-# checkpoint（增量进度与缓存）默认在 <data>/checkpoint；若需可写目录可设 POLY_CHECKPOINT_DIR 并挂载到容器内 /app/data/checkpoint
+# 用法: docker compose up -d；targets.json 由 discovery_loop 写入 /app/data/targets.json（在 POLY_DATA_DIR 内），避免单文件 bind mount 导致 Errno 16
+# 数据挂载 POLY_DATA_DIR（默认 /vault/core/data/poly）；checkpoint 默认 <data>/checkpoint
 
 services:
   discovery_loop:
     network_mode: host
     build: .
-    command: python -u ingest/discovery_loop.py --targets /app/targets.json --interval 60
+    command: python -u ingest/discovery_loop.py --targets /app/data/targets.json --interval 60
     volumes:
-      - ./targets.json:/app/targets.json
       - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
       - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
       - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app", "--glob", "targets.health", "--max-age-sec", "1800"]
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data", "--glob", "targets.health", "--max-age-sec", "1800"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -25,9 +23,8 @@ services:
   polymarket:
     network_mode: host
     build: .
-    command: python -u ingest/recorder.py --targets /app/targets.json --output-dir /app/data/raw/polymarket
+    command: python -u ingest/recorder.py --targets /app/data/targets.json --output-dir /app/data/raw/polymarket
     volumes:
-      - ./targets.json:/app/targets.json:ro
       - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
       - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
@@ -60,11 +57,11 @@ services:
   chainlink:
     network_mode: host
     build: .
-    command: python -u ingest/chainlink_recorder.py --output-dir /app/data/raw/chainlink --poll-interval 0.2 --rpc ${POLYGON_RPC_URL:-https://polygon-rpc.com}
+    command: python -u ingest/chainlink_recorder.py --output-dir /app/data/raw/chainlink --poll-interval 1.0 --rpc ${POLYGON_RPC_URL:-https://polygon-mainnet.infura.io/v3/a42e1f8d9d97482f9f73239cc2b07325}
     volumes:
       - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
-      - POLYGON_RPC_URL=${POLYGON_RPC_URL:-https://polygon-rpc.com}
+      - POLYGON_RPC_URL=${POLYGON_RPC_URL:-https://polygon-mainnet.infura.io/v3/a42e1f8d9d97482f9f73239cc2b07325}
       - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
       - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     restart: unless-stopped
@@ -130,14 +127,13 @@ services:
     build: .
     command: >
       sh -c "while true; do
-      python -u ingest/metrics_collector.py --data-dir /app/data --targets /app/targets.json --output /app/data/checkpoint/metrics.json || true;
+      python -u ingest/metrics_collector.py --data-dir /app/data --targets /app/data/targets.json --output /app/data/checkpoint/metrics.json || true;
       python -u ingest/alert_check.py --metrics /app/data/checkpoint/metrics.json || true;
       sleep 60;
       done"
     environment:
       - POLY_CHECKPOINT_DIR=${POLY_CHECKPOINT_DIR:-/app/data/checkpoint}
     volumes:
-      - ./targets.json:/app/targets.json:ro
       - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
       - ${POLY_CHECKPOINT_DIR:-/vault/core/data/poly/checkpoint}:/app/data/checkpoint
     restart: unless-stopped

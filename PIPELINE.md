@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ```text
 discovery / discovery_loop
-        -> targets.json
+        -> <data>/targets.json（Compose 下为 /app/data/targets.json，避免单文件挂载 Errno 16）
         -> polymarket recorder (WS)
         -> binance recorder (WS)
         -> chainlink recorder (RPC poll)
@@ -26,8 +26,8 @@ discovery / discovery_loop
 
 ### Compose 服务职责
 
-- `discovery_loop`：周期更新 `targets.json`（默认 60s 一轮）。
-- `polymarket`：按 `targets.json` 订阅市场事件并写 raw。
+- `discovery_loop`：周期更新 `<data>/targets.json`（默认 60s 一轮）；写入失败时自动重试，建议使用 data 目录路径。
+- `polymarket`：按 `<data>/targets.json` 订阅市场事件并写 raw。
 - `binance`：录制 `aggTrade` + `bookTicker`。
 - `chainlink`：轮询 Polygon 上预置 Feed。
 - `tracker_0x8dxd`：轮询用户地址成交数据。
@@ -49,6 +49,7 @@ discovery / discovery_loop
 
 ```text
 ${POLY_DATA_DIR}/
+  targets.json        # discovery_loop 写入；首次可无，由 discovery 拉取后生成
   raw/
     polymarket/
     binance/

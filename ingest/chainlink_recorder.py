@@ -2,12 +2,13 @@
 """
 Chainlink 预言机监控器（Polygon）
 轮询 latestRoundData()，round 更新时写入；记录含 local_receipt_ts_ms、unixtime。
-建议轮询间隔 0.2s；若有 wss:// RPC 可后续改为事件订阅以进一步降延迟。
+默认轮询间隔 1s：4 个 feed 约 4×86400 ≈ 34.6 万次/天，满足 Infura 等 3M/日 配额约束。
 """
 
 import json
 import os
 import signal
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
@@ -20,8 +21,10 @@ except ImportError:
 # 数据根目录，可通过环境变量 POLY_DATA_DIR 覆盖
 POLY_DATA_DIR = os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly")
 
-# 连续失败超过此次数时打一条 warning
+# 连续失败超过此次数时打一条 warning（并打印最近一次错误）
 CONSECUTIVE_FAILURE_WARN_THRESHOLD = 5
+# RPC 请求超时（秒），公开 RPC 可能较慢
+RPC_REQUEST_TIMEOUT = 30
 
 # Polygon 上 Chainlink 价格 Feed 代理地址（见 https://data.chain.link/feeds，BTC/ETH/SOL/XRP）
 POLYGON_FEEDS = {
@@ -55,24 +58,29 @@ class ChainlinkRecorder:
         self,
         output_dir: str = None,
         rpc_url: str = None,
-        poll_interval_sec: float = 0.2,
+        poll_interval_sec: float = 1.0,
         feeds: dict = None,
     ):
         _out = output_dir or os.path.join(POLY_DATA_DIR, "chainlink")
         self.output_dir = Path(_out)
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.rpc_url = rpc_url or os.environ.get("POLYGON_RPC_URL", "https://polygon-rpc.com")
+        self.rpc_url = rpc_url or os.environ.get("POLYGON_RPC_URL", "https://polygon-mainnet.infura.io/v3/a42e1f8d9d97482f9f73239cc2b07325")
         self.poll_interval_sec = poll_interval_sec
         self.feeds = feeds or POLYGON_FEEDS
         self.running = True
         self._last = {}  # feed_name -> (roundId, updatedAt)
         self._consecutive_failures = {}  # feed_name -> int
+        self._last_error = {}  # feed_name -> str，用于连续失败时打印
         signal.signal(signal.SIGINT, self._on_signal)
         signal.signal(signal.SIGTERM, self._on_signal)
         if Web3 is None:
             raise RuntimeError("请安装 web3: pip install web3")
 
-        self.w3 = Web3(Web3.HTTPProvider(self.rpc_url))
+        proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("HTTP_PROXY")
+        request_kwargs = {"timeout": RPC_REQUEST_TIMEOUT}
+        if proxy:
+            request_kwargs["proxies"] = {"http": proxy, "https": proxy}
+        self.w3 = Web3(Web3.HTTPProvider(self.rpc_url, request_kwargs=request_kwargs))
         if not self.w3.is_connected():
             raise RuntimeError(f"无法连接 Polygon RPC: {self.rpc_url}")
 
@@ -107,6 +115,7 @@ class ChainlinkRecorder:
     def run_sync(self):
         print(f"[{datetime.now().isoformat()}] Chainlink 监控器启动 (Polygon)")
         print(f"  RPC: {self.rpc_url}")
+        print(f"  代理: {os.environ.get('HTTPS_PROXY') or os.environ.get('HTTP_PROXY') or '未设置'}")
         print(f"  Feeds: {list(self.feeds.keys())}")
         print(f"  输出目录: {self.output_dir}")
         print(f"  轮询间隔: {self.poll_interval_sec} s\n")
@@ -128,9 +137,11 @@ class ChainlinkRecorder:
                     try:
                         data = self._fetch_round(feed_name, address)
                         if "error" in data:
+                            err_msg = data["error"]
+                            self._last_error[feed_name] = err_msg
                             self._consecutive_failures[feed_name] = self._consecutive_failures.get(feed_name, 0) + 1
                             if self._consecutive_failures[feed_name] >= CONSECUTIVE_FAILURE_WARN_THRESHOLD:
-                                print(f"[{datetime.now().isoformat()}] ⚠️  Chainlink {feed_name} 连续 {self._consecutive_failures[feed_name]} 次失败")
+                                print(f"[{datetime.now().isoformat()}] ⚠️  Chainlink {feed_name} 连续 {self._consecutive_failures[feed_name]} 次失败: {err_msg[:200]}", file=sys.stderr)
                                 self._consecutive_failures[feed_name] = 0
                             continue
                         self._consecutive_failures[feed_name] = 0
@@ -150,10 +161,12 @@ class ChainlinkRecorder:
                             f.write(json.dumps(record, ensure_ascii=False) + "\n")
                             f.flush()
                             print(f"[{datetime.now().isoformat()}] Chainlink 更新 {feed_name} round={data['roundId']} answer={data['answer']}")
-                    except Exception:
+                    except Exception as e:
+                        err_msg = str(e)
+                        self._last_error[feed_name] = err_msg
                         self._consecutive_failures[feed_name] = self._consecutive_failures.get(feed_name, 0) + 1
                         if self._consecutive_failures[feed_name] >= CONSECUTIVE_FAILURE_WARN_THRESHOLD:
-                            print(f"[{datetime.now().isoformat()}] ⚠️  Chainlink {feed_name} 连续 {self._consecutive_failures[feed_name]} 次异常")
+                            print(f"[{datetime.now().isoformat()}] ⚠️  Chainlink {feed_name} 连续 {self._consecutive_failures[feed_name]} 次异常: {err_msg[:200]}", file=sys.stderr)
                             self._consecutive_failures[feed_name] = 0
                 time.sleep(self.poll_interval_sec)
         finally:
@@ -171,8 +184,8 @@ def main():
     import argparse
     p = argparse.ArgumentParser(description="监控 Polygon 上 Chainlink 价格 feed 更新")
     p.add_argument("--output-dir", default=os.path.join(POLY_DATA_DIR, "chainlink"), help="输出目录")
-    p.add_argument("--rpc", default=os.environ.get("POLYGON_RPC_URL", "https://polygon-rpc.com"), help="Polygon RPC URL")
-    p.add_argument("--poll-interval", type=float, default=0.2, help="轮询间隔（秒），建议 0.2 以降低延迟")
+    p.add_argument("--rpc", default=os.environ.get("POLYGON_RPC_URL", "https://polygon-mainnet.infura.io/v3/a42e1f8d9d97482f9f73239cc2b07325"), help="Polygon RPC URL")
+    p.add_argument("--poll-interval", type=float, default=1.0, help="轮询间隔（秒），默认 1.0 以控制 RPC 日调用量，4 feed 约 35 万/天")
     args = p.parse_args()
     r = ChainlinkRecorder(
         output_dir=args.output_dir,
