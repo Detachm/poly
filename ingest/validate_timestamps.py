@@ -2,13 +2,16 @@
 """
 多源录制完整性校验：时间对齐 + 断连/丢包/漏 round/心跳间隔。
 输出完整分析到 --output 文件；控制台为摘要。无 --output 时仅打印摘要。
-用法: python validate_timestamps.py [--data-dir data] [--output report.txt] ...
+用法: python validate_timestamps.py [--data-dir /vault/core/data/poly] [--output report.txt] ...
 """
 
 import argparse
 import json
+import os
 from datetime import datetime
 from pathlib import Path
+
+POLY_DATA_DIR = os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly")
 
 DEFAULT_GAP_SEC = 120
 DEFAULT_HEARTBEAT_MAX_SEC = 90
@@ -303,7 +306,7 @@ def run_heartbeat_integrity(root: Path, heartbeat_max_sec: int) -> tuple[list[st
 
 def main():
     p = argparse.ArgumentParser(description="多源录制完整性校验，可输出完整分析文件")
-    p.add_argument("--data-dir", default="data", help="数据根目录")
+    p.add_argument("--data-dir", default=POLY_DATA_DIR, help="数据根目录")
     p.add_argument("--output", "-o", default="", help="完整分析报告输出路径（含全部明细）")
     p.add_argument("--lines", type=int, default=20, help="时间对齐时每源读取最后 N 行")
     p.add_argument("--gap-sec", type=int, default=DEFAULT_GAP_SEC, help="Polymarket 时间空洞阈值（秒）")

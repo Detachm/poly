@@ -1,53 +1,179 @@
 # 多源并行录制：Polymarket / Binance / Chainlink / 0x8dxd Tracker / Discovery 循环
 # 用法: 先运行 discovery 生成 targets.json，再 docker compose up -d
-# 数据挂载 ./data；targets.json 需挂载以便 polymarket 与 discovery_loop 使用
+# 数据挂载 POLY_DATA_DIR（默认 /vault/core/data/poly）；targets.json 需挂载以便 polymarket 与 discovery_loop 使用
+# checkpoint（增量进度与缓存）默认在 <data>/checkpoint；若需可写目录可设 POLY_CHECKPOINT_DIR 并挂载到容器内 /app/data/checkpoint
 
 services:
   discovery_loop:
+    network_mode: host
     build: .
-    command: python -u discovery_loop.py --targets /app/targets.json --interval 600
+    command: python -u ingest/discovery_loop.py --targets /app/targets.json --interval 60
     volumes:
       - ./targets.json:/app/targets.json
-      - ./data:/app/data
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
-      - HTTP_PROXY=${HTTP_PROXY:-http://host.docker.internal:7897}
-      - HTTPS_PROXY=${HTTPS_PROXY:-http://host.docker.internal:7897}
+      - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app", "--glob", "targets.health", "--max-age-sec", "1800"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   polymarket:
+    network_mode: host
     build: .
-    command: python -u recorder.py --targets /app/targets.json --output-dir /app/data/polymarket
+    command: python -u ingest/recorder.py --targets /app/targets.json --output-dir /app/data/raw/polymarket
     volumes:
       - ./targets.json:/app/targets.json:ro
-      - ./data:/app/data
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
-      - HTTP_PROXY=${HTTP_PROXY:-http://host.docker.internal:7897}
-      - HTTPS_PROXY=${HTTPS_PROXY:-http://host.docker.internal:7897}
+      - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/polymarket", "--glob", "**/*.jsonl", "--max-age-sec", "600"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   binance:
+    network_mode: host
+    environment:
+      - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     build: .
-    command: python -u binance_recorder.py --output-dir /app/data/binance
+    command: python -u ingest/binance_recorder.py --output-dir /app/data/raw/binance
     volumes:
-      - ./data:/app/data
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/binance", "--glob", "**/*.jsonl", "--max-age-sec", "600"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   chainlink:
+    network_mode: host
     build: .
-    command: python -u chainlink_recorder.py --output-dir /app/data/chainlink --poll-interval 0.2 --rpc ${POLYGON_RPC_URL:-https://polygon-rpc.com}
+    command: python -u ingest/chainlink_recorder.py --output-dir /app/data/raw/chainlink --poll-interval 0.2 --rpc ${POLYGON_RPC_URL:-https://polygon-rpc.com}
     volumes:
-      - ./data:/app/data
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
       - POLYGON_RPC_URL=${POLYGON_RPC_URL:-https://polygon-rpc.com}
+      - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/chainlink", "--glob", "**/*.jsonl", "--max-age-sec", "900"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
 
   tracker_0x8dxd:
+    network_mode: host
     build: .
-    command: python -u tracker_0x8dxd.py --output-dir /app/data/tracker_0x8dxd --interval 30
+    command: python -u ingest/tracker_0x8dxd.py --output-dir /app/data/raw/tracker_0x8dxd --interval 30
     volumes:
-      - ./data:/app/data
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
-      - HTTP_PROXY=${HTTP_PROXY:-http://host.docker.internal:7897}
-      - HTTPS_PROXY=${HTTPS_PROXY:-http://host.docker.internal:7897}
+      - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
       - TRACKER_USER_ADDRESS=${TRACKER_USER_ADDRESS:-0x8dxd}
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/tracker_0x8dxd", "--glob", "**/*.jsonl", "--max-age-sec", "1200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+  compact:
+    build: .
+    command: python -u ingest/compact_raw_to_bronze.py --data-dir /app/data --interval-sec 120
+    environment:
+      - POLY_CHECKPOINT_DIR=${POLY_CHECKPOINT_DIR:-/app/data/checkpoint}
+    volumes:
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+      - ${POLY_CHECKPOINT_DIR:-/vault/core/data/poly/checkpoint}:/app/data/checkpoint
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/lake/bronze", "--glob", "**/*.parquet", "--max-age-sec", "1800"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+  silver:
+    build: .
+    command: >
+      sh -c "while true; do
+      python -u ingest/build_silver.py --data-dir /app/data --source polymarket || true;
+      python -u ingest/build_silver.py --data-dir /app/data --source binance || true;
+      python -u ingest/build_silver.py --data-dir /app/data --source chainlink || true;
+      python -u ingest/build_silver.py --data-dir /app/data --source tracker_0x8dxd || true;
+      sleep 300;
+      done"
+    environment:
+      - POLY_CHECKPOINT_DIR=${POLY_CHECKPOINT_DIR:-/app/data/checkpoint}
+    volumes:
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+      - ${POLY_CHECKPOINT_DIR:-/vault/core/data/poly/checkpoint}:/app/data/checkpoint
+    restart: unless-stopped
+
+  metrics:
+    build: .
+    command: >
+      sh -c "while true; do
+      python -u ingest/metrics_collector.py --data-dir /app/data --targets /app/targets.json --output /app/data/checkpoint/metrics.json || true;
+      python -u ingest/alert_check.py --metrics /app/data/checkpoint/metrics.json || true;
+      sleep 60;
+      done"
+    environment:
+      - POLY_CHECKPOINT_DIR=${POLY_CHECKPOINT_DIR:-/app/data/checkpoint}
+    volumes:
+      - ./targets.json:/app/targets.json:ro
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+      - ${POLY_CHECKPOINT_DIR:-/vault/core/data/poly/checkpoint}:/app/data/checkpoint
+    restart: unless-stopped
+
+  etl:
+    build: .
+    command: python -u eda/01_etl/scripts/select_top2_markets.py --data-dir /app/data --hours 24 --min-buys ${ETL_MIN_BUYS:-10} --output /app/eda/01_etl/output/top2.json --run-etl
+    profiles: ["manual"]
+    environment:
+      - POLY_CHECKPOINT_DIR=${POLY_CHECKPOINT_DIR:-/app/data/checkpoint}
+    volumes:
+      - ./:/app
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+      - ${POLY_CHECKPOINT_DIR:-/vault/core/data/poly/checkpoint}:/app/data/checkpoint
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/lake/mart", "--glob", "**/*.parquet", "--max-age-sec", "3600"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+  visual:
+    build: .
+    command: >
+      sh -c "while true; do
+      python -u eda/02_visual/scripts/batch_plot_retry.py --top2 /app/eda/01_etl/output/top2.json || true;
+      sleep 300;
+      done"
+    volumes:
+      - ./:/app
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/eda/02_visual/output", "--glob", "*.png", "--max-age-sec", "7200"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 120s

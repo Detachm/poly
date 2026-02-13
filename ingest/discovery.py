@@ -10,6 +10,7 @@ import requests
 import time
 import os
 import sys
+from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 from requests.adapters import HTTPAdapter
@@ -192,7 +193,7 @@ class MarketDiscovery:
         for env_var in ["HTTPS_PROXY", "https_proxy", "HTTP_PROXY", "http_proxy", "ALL_PROXY"]:
             proxy = os.environ.get(env_var)
             if proxy: return proxy
-        return "http://127.0.0.1:7897"
+        return "http://host.docker.internal:7897"
     
     def fetch_active_events(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
         url = f"{self.GAMMA_API_BASE}/events"
@@ -369,8 +370,14 @@ class MarketDiscovery:
         return all_targets
     
     def save_targets(self, targets: List[Dict[str, Any]], output_file: str = "targets.json"):
-        with open(output_file, "w", encoding="utf-8") as f:
+        path = Path(output_file)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp_path = path.with_name(f".{path.name}.tmp")
+        with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(targets, f, indent=2, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp_path, path)
         print(f"[{datetime.now().strftime('%H:%M:%S')}] 结果已保存至: {output_file}")
 
 def main():

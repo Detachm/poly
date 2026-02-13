@@ -1,0 +1,13 @@
+{
+  "master_parquet": "eda/output/master.parquet",
+  "top2_json": "eda/01_etl/output/top2.json",
+  "window_minutes": 5,
+  "binance_price": "mid",
+  "chainlink_feed": "",
+  "show_polymarket": false,
+  "output_dir": "eda/02_visual/output",
+  "output_format": "png",
+  "figure_dpi": 200,
+  "max_plot_points": 1500,
+  "chainlink_decimals": 8
+}

@@ -1,0 +1,3 @@
+{"local_receipt_ts_ms":1700000001000,"unixtime":1700000001,"stream":"btcusdt@bookTicker","u":1,"s":"BTCUSDT","b":"40000.00","B":"1.5","a":"40001.00","A":"2.0"}
+{"local_receipt_ts_ms":1700000001100,"unixtime":1700000001,"stream":"btcusdt@bookTicker","u":2,"s":"BTCUSDT","b":"40000.50","B":"1.2","a":"40001.50","A":"1.8"}
+{"local_receipt_ts_ms":1700000001200,"unixtime":1700000001,"stream":"btcusdt@bookTicker","u":3,"s":"BTCUSDT","b":"40001.00","B":"2.0","a":"40002.00","A":"2.5"}

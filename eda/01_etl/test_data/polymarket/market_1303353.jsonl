@@ -1,0 +1,1 @@
+{"local_receipt_ts_ms":1700000001000,"market_id":"1303353","raw_data":{"event_type":"book","market":"0xdef","bids":[{"price":"0.45","size":"10"}],"asks":[{"price":"0.55","size":"20"}]}}

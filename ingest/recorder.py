@@ -35,6 +35,7 @@ WATCHDOG_IDLE_SEC = 60
 HEARTBEAT_INTERVAL_SEC = 60
 # 按小时轮转文件
 ROTATE_HOURLY = True
+RECONCILE_INTERVAL_SEC = 30
 
 
 class OrderBookRecorder:
@@ -42,7 +43,7 @@ class OrderBookRecorder:
     
     WS_MARKET_URL = "wss://ws-subscriptions-clob.polymarket.com/ws/market"
     
-    def __init__(self, targets_file: str = "targets.json", output_dir: str = "data"):
+    def __init__(self, targets_file: str = "targets.json", output_dir: str = None):
         """
         Initialize the Order Book Recorder.
         
@@ -51,11 +52,12 @@ class OrderBookRecorder:
             output_dir: Directory to save recorded data
         """
         self.targets_file = targets_file
-        self.output_dir = Path(output_dir)
+        _data_dir = output_dir or os.path.join(os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly"), "polymarket")
+        self.output_dir = Path(_data_dir)
         self.output_dir.mkdir(exist_ok=True)
         self.running = True
         
-        proxy = "http://127.0.0.1:7897"
+        proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("HTTP_PROXY") or "http://host.docker.internal:7897"
         os.environ["HTTP_PROXY"] = proxy
         os.environ["HTTPS_PROXY"] = proxy
         os.environ["http_proxy"] = proxy
@@ -106,6 +108,15 @@ class OrderBookRecorder:
         except json.JSONDecodeError as e:
             print(f"错误: 无法解析 {self.targets_file}: {e}")
             sys.exit(1)
+
+    @staticmethod
+    def _target_key(target: Dict[str, Any]) -> str:
+        return str(target.get("market_id", "")).strip()
+
+    @staticmethod
+    def _target_token_signature(target: Dict[str, Any]) -> Tuple[str, ...]:
+        tokens = target.get("token_ids") or []
+        return tuple(sorted(str(t) for t in tokens))
     
     def create_subscription_message(self, asset_ids: List[str]) -> Dict[str, Any]:
         """
@@ -123,11 +134,14 @@ class OrderBookRecorder:
         }
     
     def _market_file_path(self, market_id: str) -> Path:
-        """当前小时对应的市场文件路径（用于按小时轮转）。"""
+        """当前小时对应的市场文件路径（raw/source/dt=.../hour=... 分区）。"""
         if not ROTATE_HOURLY:
             return self.output_dir / f"market_{market_id}.jsonl"
-        hour_suffix = datetime.utcnow().strftime("%Y%m%d%H")
-        return self.output_dir / f"market_{market_id}_{hour_suffix}.jsonl"
+        dt = datetime.utcnow().strftime("%Y-%m-%d")
+        hour = datetime.utcnow().strftime("%H")
+        part_dir = self.output_dir / f"dt={dt}" / f"hour={hour}"
+        part_dir.mkdir(parents=True, exist_ok=True)
+        return part_dir / f"market_{market_id}.jsonl"
 
     async def record_market(self, target: Dict[str, Any], _output_file_unused: Path):
         """记录单个市场的订单簿数据；含快照标记、unixtime、看门狗与按小时轮转。"""
@@ -350,66 +364,90 @@ class OrderBookRecorder:
 
             await asyncio.sleep(interval)
     
-    async def record_all_markets(self, max_concurrent: int = 0):
-        """记录所有目标市场"""
-        targets = self.load_targets()
-        
-        if not targets:
-            print("没有找到目标市场")
-            return
-        
-        total_count = len(targets)
-        
-        print(f"[{datetime.now().isoformat()}] 🚀 开始监控所有 {total_count} 个市场", flush=True)
-        print(f"  数据保存目录: {self.output_dir.absolute()}", flush=True)
-        
-        connection_delay = 0.1
-        connected_count = 0
-        failed_count = 0
-        
-        async def establish_and_record(target, index):
-            nonlocal connected_count, failed_count
-            market_id = target["market_id"]
-            output_file = self.output_dir / f"market_{market_id}.jsonl"
-            
-            await asyncio.sleep(index * connection_delay)
-            
-            try:
-                connected_count += 1
-                if connected_count % 50 == 0 or connected_count == total_count:
-                    print(f"[{datetime.now().isoformat()}] 📊 进度: {connected_count}/{total_count} 个市场已启动", flush=True)
-                await self.record_market(target, output_file)
-            except Exception as e:
-                failed_count += 1
-                print(f"  [{datetime.now().isoformat()}] ⚠️  市场 {market_id} 记录失败: {e}")
-        
-        tasks = [asyncio.create_task(establish_and_record(target, i)) for i, target in enumerate(targets)]
-        monitor_task = asyncio.create_task(self.monitor_resources())
-        
+    async def _record_market_task(self, target: Dict[str, Any]) -> None:
+        market_id = target["market_id"]
+        output_file = self.output_dir / f"market_{market_id}.jsonl"
         try:
-            await asyncio.gather(*tasks, return_exceptions=True)
+            await self.record_market(target, output_file)
+        except asyncio.CancelledError:
+            raise
+        except Exception as e:
+            print(f"  [{datetime.now().isoformat()}] ⚠️  市场 {market_id} 记录异常退出: {e}")
+
+    async def _cancel_task(self, task: asyncio.Task, timeout: float = 3.0) -> None:
+        if task.done():
+            return
+        task.cancel()
+        try:
+            await asyncio.wait_for(task, timeout=timeout)
+        except (asyncio.CancelledError, asyncio.TimeoutError, Exception):
+            pass
+
+    async def record_all_markets(self, max_concurrent: int = 0):
+        """记录所有目标市场；支持周期 reconcile（新增/删除/配置变更）。"""
+        print(f"[{datetime.now().isoformat()}] 🚀 启动 Polymarket Recorder（动态 reconcile）", flush=True)
+        print(f"  数据保存目录: {self.output_dir.absolute()}", flush=True)
+
+        monitor_task = asyncio.create_task(self.monitor_resources())
+        market_tasks: Dict[str, asyncio.Task] = {}
+        target_signatures: Dict[str, Tuple[str, ...]] = {}
+
+        try:
+            while self.running:
+                targets = self.load_targets()
+                active_targets = {
+                    self._target_key(t): t
+                    for t in targets
+                    if self._target_key(t)
+                }
+
+                # 删除已下线市场
+                removed = sorted(set(market_tasks.keys()) - set(active_targets.keys()))
+                for market_id in removed:
+                    print(f"[{datetime.now().isoformat()}] 🛑 下线市场: {market_id}")
+                    await self._cancel_task(market_tasks.pop(market_id))
+                    target_signatures.pop(market_id, None)
+
+                # 新增或配置变更（当前以 token_ids 变化为准）
+                for market_id, target in active_targets.items():
+                    new_sig = self._target_token_signature(target)
+                    old_sig = target_signatures.get(market_id)
+                    if market_id not in market_tasks:
+                        print(f"[{datetime.now().isoformat()}] ➕ 新增市场任务: {market_id} ({len(new_sig)} tokens)")
+                        market_tasks[market_id] = asyncio.create_task(self._record_market_task(target))
+                        target_signatures[market_id] = new_sig
+                        continue
+                    if old_sig != new_sig:
+                        print(f"[{datetime.now().isoformat()}] ♻️ 市场配置变更，重启任务: {market_id}")
+                        await self._cancel_task(market_tasks[market_id])
+                        market_tasks[market_id] = asyncio.create_task(self._record_market_task(target))
+                        target_signatures[market_id] = new_sig
+
+                # 回收异常退出任务，下一轮由 active_targets 自动拉起
+                finished = [mid for mid, t in market_tasks.items() if t.done()]
+                for mid in finished:
+                    exc = None
+                    try:
+                        exc = market_tasks[mid].exception()
+                    except Exception:
+                        pass
+                    print(f"[{datetime.now().isoformat()}] ⚠️ 任务已结束: {mid} exc={exc}")
+                    market_tasks.pop(mid, None)
+                    target_signatures.pop(mid, None)
+
+                await asyncio.sleep(RECONCILE_INTERVAL_SEC)
         except KeyboardInterrupt:
             pass
         finally:
             self.running = False
-            
-            for task in tasks:
-                if not task.done():
-                    task.cancel()
+            for task in list(market_tasks.values()):
+                await self._cancel_task(task)
             monitor_task.cancel()
-            
             try:
-                await asyncio.wait_for(
-                    asyncio.gather(*[t for t in tasks if not t.done()], monitor_task, return_exceptions=True),
-                    timeout=3.0
-                )
-            except asyncio.TimeoutError:
+                await monitor_task
+            except (asyncio.CancelledError, Exception):
                 pass
-            
             print(f"\n[{datetime.now().isoformat()}] 所有记录任务已停止")
-            print(f"  ✅ 成功连接: {connected_count}/{total_count} 个市场")
-            if failed_count > 0:
-                print(f"  ❌ 连接失败: {failed_count} 个市场")
 
 
 def main():
@@ -424,8 +462,8 @@ def main():
     )
     parser.add_argument(
         "--output-dir",
-        default="data",
-        help="数据输出目录 (默认: data)"
+        default=os.path.join(os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly"), "polymarket"),
+        help="数据输出目录 (默认: POLY_DATA_DIR/polymarket)"
     )
     parser.add_argument(
         "--concurrent",

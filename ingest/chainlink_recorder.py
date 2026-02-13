@@ -17,12 +17,15 @@ try:
 except ImportError:
     Web3 = None
 
+# 数据根目录，可通过环境变量 POLY_DATA_DIR 覆盖
+POLY_DATA_DIR = os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly")
+
 # 连续失败超过此次数时打一条 warning
 CONSECUTIVE_FAILURE_WARN_THRESHOLD = 5
 
 # Polygon 上 Chainlink 价格 Feed 代理地址（见 https://data.chain.link/feeds，BTC/ETH/SOL/XRP）
 POLYGON_FEEDS = {
-    "BTC/USD": "0xc907E116054Ad103354f2D4Fd4e30EC22C8797A8",
+    "BTC/USD": "0xc907E116054Ad103354f2D350FD2514433D57F6f",
     "ETH/USD": "0xF9680D99D6C9589e2a93a78A04A279e509205945",
     "SOL/USD": "0x10C8264C0935b3B9870013e057f330Ff3e9C56dC",
     "XRP/USD": "0x785ba89291f676b5386652eB12b30cF361020694",
@@ -50,12 +53,13 @@ FEED_ABI = [
 class ChainlinkRecorder:
     def __init__(
         self,
-        output_dir: str = "data/chainlink",
+        output_dir: str = None,
         rpc_url: str = None,
         poll_interval_sec: float = 0.2,
         feeds: dict = None,
     ):
-        self.output_dir = Path(output_dir)
+        _out = output_dir or os.path.join(POLY_DATA_DIR, "chainlink")
+        self.output_dir = Path(_out)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.rpc_url = rpc_url or os.environ.get("POLYGON_RPC_URL", "https://polygon-rpc.com")
         self.poll_interval_sec = poll_interval_sec
@@ -93,16 +97,31 @@ class ChainlinkRecorder:
         except Exception as e:
             return {"error": str(e)}
 
+    def _output_file(self) -> Path:
+        dt = datetime.utcnow().strftime("%Y-%m-%d")
+        hour = datetime.utcnow().strftime("%H")
+        part_dir = self.output_dir / f"dt={dt}" / f"hour={hour}"
+        part_dir.mkdir(parents=True, exist_ok=True)
+        return part_dir / "updates.jsonl"
+
     def run_sync(self):
-        out_file = self.output_dir / "updates.jsonl"
         print(f"[{datetime.now().isoformat()}] Chainlink 监控器启动 (Polygon)")
         print(f"  RPC: {self.rpc_url}")
         print(f"  Feeds: {list(self.feeds.keys())}")
-        print(f"  输出: {out_file}")
+        print(f"  输出目录: {self.output_dir}")
         print(f"  轮询间隔: {self.poll_interval_sec} s\n")
 
-        with open(out_file, "a", encoding="utf-8") as f:
+        f = None
+        current_file = None
+        try:
             while self.running:
+                out_file = self._output_file()
+                if current_file != out_file:
+                    if f is not None:
+                        f.flush()
+                        f.close()
+                    current_file = out_file
+                    f = open(out_file, "a", encoding="utf-8")
                 local_ms = self._local_ts_ms()
                 unixtime = local_ms // 1000
                 for feed_name, address in self.feeds.items():
@@ -137,6 +156,13 @@ class ChainlinkRecorder:
                             print(f"[{datetime.now().isoformat()}] ⚠️  Chainlink {feed_name} 连续 {self._consecutive_failures[feed_name]} 次异常")
                             self._consecutive_failures[feed_name] = 0
                 time.sleep(self.poll_interval_sec)
+        finally:
+            if f is not None:
+                try:
+                    f.flush()
+                    f.close()
+                except Exception:
+                    pass
 
         print(f"[{datetime.now().isoformat()}] Chainlink 监控器已停止")
 
@@ -144,7 +170,7 @@ class ChainlinkRecorder:
 def main():
     import argparse
     p = argparse.ArgumentParser(description="监控 Polygon 上 Chainlink 价格 feed 更新")
-    p.add_argument("--output-dir", default="data/chainlink", help="输出目录")
+    p.add_argument("--output-dir", default=os.path.join(POLY_DATA_DIR, "chainlink"), help="输出目录")
     p.add_argument("--rpc", default=os.environ.get("POLYGON_RPC_URL", "https://polygon-rpc.com"), help="Polygon RPC URL")
     p.add_argument("--poll-interval", type=float, default=0.2, help="轮询间隔（秒），建议 0.2 以降低延迟")
     args = p.parse_args()

@@ -1,0 +1,2 @@
+{"local_receipt_ts_ms":1700000001050,"unixtime":1700000001,"stream":"btcusdt@aggTrade","e":"aggTrade","E":1700000001050,"a":100,"p":"40000.25","q":"0.1","f":1,"l":1,"T":1700000001040,"m":false,"M":false}
+{"local_receipt_ts_ms":1700000001150,"unixtime":1700000001,"stream":"btcusdt@aggTrade","e":"aggTrade","E":1700000001150,"a":101,"p":"40001.00","q":"0.2","f":2,"l":2,"T":1700000001140,"m":true,"M":false}

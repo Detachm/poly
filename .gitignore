@@ -2,3 +2,8 @@ data/
 validate_report.txt
 __pycache__/
 *.log
+2026-01-12.csv
+
+# EDA 大文件输出，不纳入版本控制
+eda/output/*.parquet
+eda/output/*.csv

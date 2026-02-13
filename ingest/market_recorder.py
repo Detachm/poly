@@ -60,8 +60,8 @@ class Config:
     # 代理配置
     PROXY = "http://127.0.0.1:7897"
     
-    # 输出目录
-    OUTPUT_DIR = Path("data")
+    # 输出目录（可通过环境变量 POLY_DATA_DIR 覆盖，默认 /vault/core/data/poly）
+    OUTPUT_DIR = Path(os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly"))
     TRADES_DIR = OUTPUT_DIR / "trades"
     ORDERBOOKS_DIR = OUTPUT_DIR / "orderbooks"
 

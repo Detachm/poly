@@ -9,7 +9,9 @@ from pathlib import Path
 def test_load_targets():
     """recorder.load_targets 过滤 is_active 且返回 list。"""
     from recorder import OrderBookRecorder
-    rec = OrderBookRecorder(targets_file="targets.json", output_dir="data")
+    import os
+    data_dir = os.path.join(os.environ.get("POLY_DATA_DIR", "/vault/core/data/poly"), "polymarket")
+    rec = OrderBookRecorder(targets_file="targets.json", output_dir=data_dir)
     # 不读磁盘则用 mock；若 targets.json 存在则真读
     p = Path("targets.json")
     if not p.exists():

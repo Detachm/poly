@@ -1,0 +1,13 @@
+{
+  "data_dir": "",
+  "targets_file": "",
+  "window_ms": 100,
+  "polymarket_tolerance_ms": 1000,
+  "symbol_filter": "btcusdt",
+  "chainlink_tolerance_ms": 60000,
+  "output_filename": "master.parquet",
+  "max_book_rows": 0,
+  "max_agg_rows": 0,
+  "max_poly_rows_per_market": 0,
+  "max_chainlink_rows_per_feed": 0
+}

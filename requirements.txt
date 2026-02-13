@@ -7,3 +7,11 @@ psutil>=5.9.0
 
 # Chainlink 监控（Polygon）
 web3>=6.0.0
+
+# EDA Phase 1 ETL
+pandas>=2.0.0
+numpy>=1.24.0
+pyarrow>=14.0.0
+
+# EDA Phase 2 可视化
+matplotlib>=3.7.0
