@@ -10,6 +10,7 @@ import argparse
 import json
 import os
 import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -44,6 +45,56 @@ def _save_checkpoint(path: Path, checkpoint: Dict[str, dict]) -> None:
     os.replace(tmp, path)
 
 
+def _load_retention_filter(path: Path) -> dict:
+    """加载 retention_filter.json，返回过滤配置。文件不存在则返回空 dict（不过滤）。"""
+    if not path.exists():
+        return {}
+    try:
+        data = json.load(open(path, "r", encoding="utf-8"))
+        return {
+            "kept_market_ids": set(data.get("kept_market_ids", [])),
+            "keep_hours": set(tuple(x) for x in data.get("keep_hours_binance_chainlink", [])),
+        }
+    except Exception:
+        return {}
+
+
+def _should_process_file(source: str, rel: Path, filt: dict) -> bool:
+    """按源判断是否应处理此文件。filt 为空时全量处理（向后兼容）。"""
+    if not filt:
+        return True
+
+    if source == "polymarket":
+        stem = rel.name.replace(".jsonl", "")
+        if stem.startswith("market_"):
+            mid = stem.replace("market_", "").split("_")[0]
+            if mid.isdigit():
+                return mid in filt.get("kept_market_ids", set())
+        return True  # heartbeat.jsonl 等非 market 文件始终处理
+
+    if source in ("binance", "chainlink"):
+        dt, hour = None, None
+        for part in rel.parts:
+            if part.startswith("dt="):
+                dt = part[3:]
+            if part.startswith("hour="):
+                hour = part[5:]
+        if dt and hour is not None:
+            # 最近 48 小时内的数据始终处理，filter 只过滤更老的历史数据
+            try:
+                partition_time = datetime(int(dt[:4]), int(dt[5:7]), int(dt[8:10]),
+                                         int(hour), tzinfo=timezone.utc)
+                if (datetime.now(timezone.utc) - partition_time).total_seconds() < 48 * 3600:
+                    return True
+            except Exception:
+                pass
+            return (dt, hour) in filt.get("keep_hours", set())
+        return True  # 非分区文件始终处理
+
+    # tracker_0x8dxd, chain_0x8dxd: 不过滤，始终处理
+    return True
+
+
 def _event_time_ms(source: str, rec: dict):
     if source == "binance":
         for key in ("E", "T"):
@@ -62,6 +113,12 @@ def _event_time_ms(source: str, rec: dict):
         if rec.get("timestamp") is not None:
             try:
                 return int(rec["timestamp"]) * 1000
+            except Exception:
+                pass
+    if source == "chain_0x8dxd":
+        if rec.get("unixtime") is not None:
+            try:
+                return int(rec["unixtime"]) * 1000
             except Exception:
                 pass
     return None
@@ -119,7 +176,25 @@ def _checkpoint_root(data_dir: Path) -> Path:
     return Path(v).resolve() if v else data_dir / "checkpoint"
 
 
-def compact_source(data_dir: Path, source: str) -> int:
+def _recent_partitions(raw_root: Path, lookback_hours: int) -> List[Path]:
+    """只返回最近 lookback_hours 小时内的分区目录。lookback_hours<=0 时返回 raw_root 本身（全量扫描）。"""
+    if lookback_hours <= 0:
+        return [raw_root]
+    now = datetime.now(timezone.utc)
+    dirs = []
+    for h in range(lookback_hours + 1):
+        t = now - timedelta(hours=h)
+        p = raw_root / f"dt={t.strftime('%Y-%m-%d')}" / f"hour={t.hour:02d}"
+        if p.is_dir():
+            dirs.append(p)
+    # 也包含 raw_root 下不在 dt= 分区内的文件（如 heartbeat.jsonl）
+    for f in raw_root.iterdir():
+        if f.is_file() and f.suffix == ".jsonl":
+            dirs.append(f)
+    return dirs
+
+
+def compact_source(data_dir: Path, source: str, retention_filter: dict = None, lookback_hours: int = 0) -> int:
     raw_root = data_dir / "raw" / source
     bronze_root = data_dir / "lake" / "bronze" / source
     checkpoint_path = _checkpoint_root(data_dir) / f"compact_{source}.json"
@@ -129,9 +204,24 @@ def compact_source(data_dir: Path, source: str) -> int:
     if not raw_root.exists():
         return 0
 
-    for jsonl in sorted(raw_root.rglob("*.jsonl")):
+    # 收集待扫描的 jsonl 文件
+    scan_roots = _recent_partitions(raw_root, lookback_hours)
+    jsonl_files = []
+    for root in scan_roots:
+        if root.is_file():
+            jsonl_files.append(root)
+        else:
+            jsonl_files.extend(root.rglob("*.jsonl"))
+    jsonl_files.sort()
+
+    for jsonl in jsonl_files:
         rel = jsonl.relative_to(raw_root)
         key = str(rel)
+
+        # 过滤：跳过不在 retention filter 中的文件（不更新 checkpoint）
+        if not _should_process_file(source, rel, retention_filter):
+            continue
+
         entry = checkpoint.get(key, {})
         if not isinstance(entry, dict):
             entry = {}
@@ -179,24 +269,33 @@ def compact_source(data_dir: Path, source: str) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Incremental compact raw JSONL to bronze parquet")
     parser.add_argument("--data-dir", default=POLY_DATA_DIR)
-    parser.add_argument("--sources", default="polymarket,binance,chainlink,tracker_0x8dxd")
+    parser.add_argument("--sources", default="polymarket,binance,chainlink,tracker_0x8dxd,chain_0x8dxd")
     parser.add_argument("--interval-sec", type=int, default=0, help="0=run once; >0 loop mode")
+    parser.add_argument("--lookback-hours", type=int, default=6, help="only scan recent N hours of partitions; 0=full scan")
     args = parser.parse_args()
 
     data_dir = Path(args.data_dir)
     sources = [s.strip() for s in args.sources.split(",") if s.strip()]
+    filter_path = _checkpoint_root(data_dir) / "retention_filter.json"
+
     if args.interval_sec <= 0:
+        retention_filter = _load_retention_filter(filter_path)
+        if retention_filter:
+            print(f"retention filter: {len(retention_filter.get('kept_market_ids', set()))} markets, {len(retention_filter.get('keep_hours', set()))} hours")
         total = 0
         for s in sources:
-            n = compact_source(data_dir, s)
+            n = compact_source(data_dir, s, retention_filter, args.lookback_hours)
             print(f"compact {s}: {n} files")
             total += n
         return 0
 
-    print(f"compact loop start, interval={args.interval_sec}s")
+    print(f"compact loop start, interval={args.interval_sec}s, lookback={args.lookback_hours}h")
     while True:
+        retention_filter = _load_retention_filter(filter_path)
+        if retention_filter:
+            print(f"[{int(time.time())}] retention filter: {len(retention_filter.get('kept_market_ids', set()))} markets, {len(retention_filter.get('keep_hours', set()))} hours")
         for s in sources:
-            n = compact_source(data_dir, s)
+            n = compact_source(data_dir, s, retention_filter, args.lookback_hours)
             print(f"[{int(time.time())}] compact {s}: {n} files")
         time.sleep(args.interval_sec)
 

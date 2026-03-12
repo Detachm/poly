@@ -49,15 +49,17 @@ def _setup_binance_proxy():
     os.environ["HTTP_PROXY"] = os.environ["HTTPS_PROXY"] = os.environ["http_proxy"] = os.environ["https_proxy"] = proxy
 
 
-def _stream_url(symbols: List[str], agg_trade: bool, book_ticker: bool) -> str:
-    """构建单类型组合流 URL。"""
+def _stream_url(symbols: List[str], stream_type: str) -> str:
+    """构建单类型组合流 URL。stream_type: aggTrade / bookTicker / depth20@100ms"""
     parts = []
     for s in symbols:
         s = s.lower()
-        if agg_trade:
+        if stream_type == "aggTrade":
             parts.append(f"{s}@aggTrade")
-        if book_ticker:
+        elif stream_type == "bookTicker":
             parts.append(f"{s}@bookTicker")
+        elif stream_type == "depth20":
+            parts.append(f"{s}@depth20@100ms")
     return f"{BINANCE_WS_BASE}/stream?streams={'/'.join(parts)}"
 
 
@@ -68,7 +70,7 @@ class StreamRecorder:
     """
 
     def __init__(self, stream_type: str, symbols: List[str], output_dir: Path):
-        assert stream_type in ("aggTrade", "bookTicker")
+        assert stream_type in ("aggTrade", "bookTicker", "depth20")
         self.stream_type = stream_type
         self.symbols = [s.lower() for s in symbols]
         self.output_dir = Path(output_dir)
@@ -83,12 +85,13 @@ class StreamRecorder:
         self._current_partition = ""
         self._file_seq = 0
 
+        self.url = _stream_url(self.symbols, stream_type)
         if stream_type == "aggTrade":
-            self.url = _stream_url(self.symbols, agg_trade=True, book_ticker=False)
             self.file_base = "agg_trades"
-        else:
-            self.url = _stream_url(self.symbols, agg_trade=False, book_ticker=True)
+        elif stream_type == "bookTicker":
             self.file_base = "book_ticker"
+        else:
+            self.file_base = "depth20"
 
     async def start(self):
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -151,6 +154,27 @@ class StreamRecorder:
             "A": data.get("A"),
         }
 
+    def _record_depth(self, msg: dict, stream: str, local_ms: int) -> dict:
+        """解析 depth20@100ms 流，记录 20 档 bid/ask。"""
+        data = msg.get("data") if isinstance(msg.get("data"), dict) else msg
+        if not isinstance(data, dict):
+            return None
+        bids = data.get("bids", [])
+        asks = data.get("asks", [])
+        if not bids and not asks:
+            return None
+        # 提取 symbol: "btcusdt@depth20@100ms" -> "BTCUSDT"
+        s = stream.split("@")[0].upper() if stream else data.get("s", "")
+        return {
+            "local_receipt_ts_ms": local_ms,
+            "unixtime": local_ms // 1000,
+            "stream": stream,
+            "s": s,
+            "lastUpdateId": data.get("lastUpdateId"),
+            "bids": json.dumps(bids),
+            "asks": json.dumps(asks),
+        }
+
     async def _ws_loop(self):
         """生产者：只收包、打时间戳、入队，不写盘。"""
         reconnect_delay = 1
@@ -182,8 +206,10 @@ class StreamRecorder:
                         stream = msg.get("stream", "")
                         if self.stream_type == "aggTrade":
                             record = self._record_agg(msg, stream, local_ms)
-                        else:
+                        elif self.stream_type == "bookTicker":
                             record = self._record_book(msg, stream, local_ms)
+                        else:
+                            record = self._record_depth(msg, stream, local_ms)
                         if record is None:
                             continue
                         if self._first_log:
@@ -281,6 +307,7 @@ async def _run(
     symbols: List[str],
     record_agg: bool,
     record_book: bool,
+    record_depth: bool,
     stop_event: asyncio.Event,
 ):
     _setup_binance_proxy()
@@ -290,12 +317,15 @@ async def _run(
         recorders.append(StreamRecorder("aggTrade", symbols, out))
     if record_book:
         recorders.append(StreamRecorder("bookTicker", symbols, out))
+    if record_depth:
+        recorders.append(StreamRecorder("depth20", symbols, out))
     if not recorders:
-        print("未启用任何流（--no-agg 且 --no-book），退出")
+        print("未启用任何流，退出")
         return
     for r in recorders:
         await r.start()
-    print(f"[{datetime.now().isoformat()}] Binance 录制器已启动（双连接 + 批量写入）。Ctrl+C 停止。\n")
+    n = len(recorders)
+    print(f"[{datetime.now().isoformat()}] Binance 录制器已启动（{n} 个连接 + 批量写入）。Ctrl+C 停止。\n")
     await stop_event.wait()
     print(f"[{datetime.now().isoformat()}] 正在停止...")
     for r in recorders:
@@ -305,11 +335,12 @@ async def _run(
 
 def main():
     import argparse
-    p = argparse.ArgumentParser(description="录制 Binance 现货 AggTrades + BookTicker（双连接+生产者-消费者）")
+    p = argparse.ArgumentParser(description="录制 Binance 现货 AggTrades + BookTicker + Depth20")
     p.add_argument("--output-dir", default=os.path.join(POLY_DATA_DIR, "binance"), help="输出目录")
     p.add_argument("--symbols", nargs="+", default=DEFAULT_SYMBOLS, help="交易对，如 btcusdt ethusdt")
     p.add_argument("--no-agg", action="store_true", help="不录制 AggTrades")
     p.add_argument("--no-book", action="store_true", help="不录制 BookTicker")
+    p.add_argument("--no-depth", action="store_true", help="不录制 Depth20")
     args = p.parse_args()
 
     stop_event = asyncio.Event()
@@ -333,6 +364,7 @@ def main():
                 symbols=args.symbols,
                 record_agg=not args.no_agg,
                 record_book=not args.no_book,
+                record_depth=not args.no_depth,
                 stop_event=stop_event,
             )
         )

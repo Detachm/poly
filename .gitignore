@@ -4,6 +4,15 @@ __pycache__/
 *.log
 2026-01-12.csv
 
+# Claude Code 本地配置
+.claude/
+
 # EDA 大文件输出，不纳入版本控制
 eda/output/*.parquet
 eda/output/*.csv
+# 0x8dxd 全量下载临时输出
+eda/01_etl/output/0x8dxd_full/
+# XGBoost 特征缓存（parquet 太大）
+eda/03_analysis/output/xgboost_baseline/feature_cache/
+# 通用：排除所有 parquet 文件
+*.parquet

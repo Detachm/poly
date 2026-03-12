@@ -16,8 +16,10 @@ discovery / discovery_loop
         -> polymarket recorder (WS)
         -> binance recorder (WS)
         -> chainlink recorder (RPC poll)
-        -> tracker_0x8dxd (HTTP poll)
-        -> compact (raw -> bronze)
+        -> tracker_0x8dxd (HTTP poll: trades + activity + positions)
+        -> chain_recorder_0x8dxd (WSS: OrderFilled + OrderCancelled)
+        -> audit (周期扫描 -> retention_filter.json)
+        -> compact (raw -> bronze，按 retention filter 过滤)
         -> silver (bronze -> silver)
         -> metrics / alert
         -> etl (manual profile)
@@ -30,8 +32,10 @@ discovery / discovery_loop
 - `polymarket`：按 `<data>/targets.json` 订阅市场事件并写 raw。
 - `binance`：录制 `aggTrade` + `bookTicker`。
 - `chainlink`：轮询 Polygon 上预置 Feed。
-- `tracker_0x8dxd`：轮询用户地址成交数据。
-- `compact`：将 raw JSONL 压实到 bronze parquet。
+- `tracker_0x8dxd`：轮询用户地址成交（10s）、活动/结算（30s）、持仓快照（60s）。
+- `chain_recorder_0x8dxd`：订阅 Polygon CTF Exchange 链上 OrderFilled/OrderCancelled 事件，录制 maker/taker 角色。
+- `audit`：每小时扫描 raw 数据，产出 `checkpoint/retention_filter.json`（kept_market_ids + keep_hours），供 compact 过滤。
+- `compact`：将 raw JSONL 压实到 bronze parquet。若存在 `retention_filter.json`，仅处理 filter 内的文件（polymarket 按 market_id、binance/chainlink 按 dt+hour 过滤；tracker_0x8dxd/chain_0x8dxd 始终处理）。无 filter 时全量处理，向后兼容。
 - `silver`：构建各源 silver 层。
 - `metrics`：生成 `metrics.json` 并执行告警检查。
 - `etl`：手动 profile 触发，生成 top2 并跑 ETL。
@@ -39,7 +43,7 @@ discovery / discovery_loop
 
 ### 网络与代理说明（当前架构）
 
-- `polymarket` / `discovery_loop` / `binance` / `chainlink` / `tracker_0x8dxd` 使用 `host` 网络模式。
+- `polymarket` / `discovery_loop` / `binance` / `chainlink` / `tracker_0x8dxd` / `chain_recorder_0x8dxd` 使用 `host` 网络模式。
 - 上述服务默认代理为 `http://127.0.0.1:7897`（`HTTP_PROXY` / `HTTPS_PROXY`）。
 - 这样可以避免 bridge 网络下容器到本机代理端口不可达的问题。
 
@@ -55,6 +59,7 @@ ${POLY_DATA_DIR}/
     binance/
     chainlink/
     tracker_0x8dxd/
+    chain_0x8dxd/
   lake/
     bronze/
     silver/
@@ -62,6 +67,7 @@ ${POLY_DATA_DIR}/
   checkpoint/          # 增量进度与缓存（见下方说明）
     compact_*.json
     silver_*.json
+    retention_filter.json   # audit 产出，compact 读取
     condition_market_index.json
     metrics.json
 ```
@@ -70,6 +76,7 @@ ${POLY_DATA_DIR}/
 
 - `compact_<source>.json`：raw→bronze 每个文件的 inode/offset/carry，按 offset 只读新增行。
 - `silver_<source>.json`：已处理的 bronze parquet 列表，silver 只处理新增文件。
+- `retention_filter.json`：audit 产出的过滤配置（`kept_market_ids` + `keep_hours_binance_chainlink`），compact 每轮迭代重新加载。
 - `condition_market_index.json`：conditionId→market_id 映射缓存（select_top2 / ETL 用）。
 - `metrics.json`：当前指标快照，供告警检查用。
 
@@ -82,7 +89,8 @@ ${POLY_DATA_DIR}/
 | Polymarket | `raw/polymarket/` | JSONL | `market_{id}_{YYYYMMDDHH}.jsonl` 按小时轮转；另有 `heartbeat.jsonl` |
 | Binance | `raw/binance/` | JSONL | `agg_trades.jsonl` / `book_ticker.jsonl`，单文件超过阈值自动轮转 |
 | Chainlink | `raw/chainlink/` | JSONL | `updates.jsonl` |
-| Tracker | `raw/tracker_0x8dxd/` | JSONL | `trades.jsonl` |
+| Tracker | `raw/tracker_0x8dxd/` | JSONL | `trades.jsonl` + `activity.jsonl` + `positions.jsonl` |
+| Chain Recorder | `raw/chain_0x8dxd/` | JSONL | `events.jsonl`（OrderFilled + OrderCancelled） |
 
 所有源均写入 `local_receipt_ts_ms` 与 `unixtime`，用于多源对齐。
 
@@ -137,7 +145,7 @@ supervisorctl status
 docker compose ps
 ```
 
-关键采集容器状态应为 `healthy`：`polymarket`、`binance`、`chainlink`、`tracker_0x8dxd`。
+关键采集容器状态应为 `healthy`：`polymarket`、`binance`、`chainlink`、`tracker_0x8dxd`、`chain_recorder_0x8dxd`。
 
 ### 2) 关键日志检查
 
@@ -233,5 +241,5 @@ docker compose run --rm visual python -u eda/02_visual/scripts/batch_plot_retry.
   - Docker Compose：在宿主机设置 `POLY_CHECKPOINT_DIR` 为可写目录（如 `$HOME/poly_checkpoint`），compose 会将其挂载到容器内 `/app/data/checkpoint`，compact / silver / metrics / etl 的 checkpoint 写入均落在此目录。
 - `HTTP_PROXY` / `HTTPS_PROXY`：外网代理。
 - `POLYGON_RPC_URL`：Chainlink 使用的 Polygon RPC 地址。
-- `TRACKER_USER_ADDRESS`：Tracker 监控地址（默认 `0x8dxd`）。
+- `TRACKER_USER_ADDRESS`：Tracker 监控地址（默认 `0x63ce342161250d705dc0b16df89036c8e5f9ba9a`，即 0x8dxd 链上地址）。
 - `ETL_MIN_BUYS`：ETL 最小买单过滤阈值。

@@ -66,29 +66,67 @@ services:
       - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/chainlink", "--glob", "**/*.jsonl", "--max-age-sec", "900"]
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/chainlink", "--glob", "**/*.jsonl", "--max-age-sec", "1800"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 90s
+      retries: 5
+      start_period: 120s
 
   tracker_0x8dxd:
     network_mode: host
     build: .
-    command: python -u ingest/tracker_0x8dxd.py --output-dir /app/data/raw/tracker_0x8dxd --interval 30
+    command: python -u ingest/tracker_0x8dxd.py
+      --output-dir /app/data/raw/tracker_0x8dxd
+      --interval 10
+      --activity-interval 30
+      --positions-interval 60
     volumes:
       - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
     environment:
       - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
       - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
-      - TRACKER_USER_ADDRESS=${TRACKER_USER_ADDRESS:-0x8dxd}
+      - TRACKER_USER_ADDRESS=${TRACKER_USER_ADDRESS:-0x63ce342161250d705dc0b16df89036c8e5f9ba9a}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/tracker_0x8dxd", "--glob", "**/*.jsonl", "--max-age-sec", "1200"]
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/raw/tracker_0x8dxd", "--glob", "heartbeat.jsonl", "--max-age-sec", "120"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 120s
+
+  chain_recorder_0x8dxd:
+    network_mode: host
+    build: .
+    command: python -u ingest/chain_recorder_0x8dxd.py
+      --output-dir /app/data/raw/chain_0x8dxd
+    volumes:
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+    environment:
+      - TRACKER_USER_ADDRESS=${TRACKER_USER_ADDRESS:-0x63ce342161250d705dc0b16df89036c8e5f9ba9a}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py",
+             "--dir", "/app/data/raw/chain_0x8dxd",
+             "--glob", "heartbeat.jsonl",
+             "--max-age-sec", "120"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  audit:
+    build: .
+    command: >
+      sh -c "while true; do
+      python -u eda/retention/audit.py --data-dir /app/data --output /app/data/checkpoint/retention_filter.json || true;
+      sleep 3600;
+      done"
+    volumes:
+      - ./:/app
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+    environment:
+      - POLY_CHECKPOINT_DIR=${POLY_CHECKPOINT_DIR:-/app/data/checkpoint}
+    restart: unless-stopped
 
   compact:
     build: .
@@ -114,6 +152,7 @@ services:
       python -u ingest/build_silver.py --data-dir /app/data --source binance || true;
       python -u ingest/build_silver.py --data-dir /app/data --source chainlink || true;
       python -u ingest/build_silver.py --data-dir /app/data --source tracker_0x8dxd || true;
+      python -u ingest/build_silver.py --data-dir /app/data --source chain_0x8dxd || true;
       sleep 300;
       done"
     environment:
@@ -173,3 +212,33 @@ services:
       timeout: 10s
       retries: 3
       start_period: 120s
+
+  paper_trader:
+    network_mode: host
+    build: .
+    command: python -u -m simulate.run_paper --config /app/data/simulate/config.json
+    volumes:
+      - ./:/app
+    environment:
+      - HTTP_PROXY=${HTTP_PROXY:-http://127.0.0.1:7897}
+      - HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7897}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "ingest/healthcheck.py", "--dir", "/app/data/simulate", "--glob", "heartbeat.json", "--max-age-sec", "300"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # 数据保留：在容器内执行，避免宿主机无 sudo 时无法删容器创建的 silver。先跑 audit 生成 audit_result.json，再 run 此服务。
+  retention:
+    build: .
+    command: python eda/retention/apply_retention.py --audit eda/retention/audit_result.json --data-dir /app/data --silver-only
+    volumes:
+      - ./:/app
+      - ${POLY_DATA_DIR:-/vault/core/data/poly}:/app/data
+    environment:
+      - POLY_DATA_DIR=/app/data
+    profiles:
+      - manual
+    restart: "no"

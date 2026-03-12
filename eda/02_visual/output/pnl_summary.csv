@@ -1,0 +1,501 @@
+conditionId,title,trade_count,closed,winner,total_pnl_usdc
+0x0b4cc3b739e1dfe5d73274740e7308b6fb389c5af040c3a174923d928d134bee,Will Jesus Christ return before 2027?,526,False,open,-1065.1228
+0x3488f31e6449f9803f99a8b5dd232c7ad883637f1c86e6953305a2ef19c77f20,"US strikes Iran by February 28, 2026?",359,True,Yes,-28054.1734
+0x46d40e851b24d9b0af4bc1942ccd86439cae82a9011767da14950df0ad997adf,Will Trump nominate Judy Shelton as the next Fed chair?,349,False,open,-78.388
+0xdeb615a52cd114e5aa27d8344ae506a72bea81f6ed13f5915f050b615a193c20,Will the Fed decrease interest rates by 50+ bps after the Ma,277,False,open,-331.6469
+0x4b78de44ea49d0eb8d5fee85352294b6f679a47c56944c6ad5c945e9a2ba7211,Government shutdown on Saturday?,229,True,No,8076.0775
+0x257b18205f908aef01ef2d1d50e6fea7d29cf5486fe04031d8b101394476faed,Will there be no change in Fed interest rates after the Marc,220,False,open,2107.9305
+0x25aa90b3cd98305e849189b4e8b770fc77fe89bccb7cf9656468414e01145d38,Will the Fed increase interest rates by 25+ bps after the Ma,214,False,open,-105.6531
+0x61b66d02793b4a68ab0cc25be60d65f517fe18c7d654041281bb130341244fcc,Will Trump nominate Kevin Warsh as the next Fed chair?,214,False,open,-98.4051
+0xa5fa2094af61fdfdb0398c22c4f1bb8788cabc680bcc0042f77c6388b23afaf4,Will NVIDIA be the largest company in the world by market ca,203,False,open,52.8329
+0x6fefc0438c7598b23531457c8c60541990d0786bd4bd9dfc3eabc8d95c291092,"Will Bitcoin reach $250,000 by December 31, 2026?",197,False,open,-9.6475
+0xe1c67f75aac5b10dc28f1a2fbb79b079fc7f7320abfbd6a950a50c372979569b,"US strikes Iran by February 20, 2026?",181,True,No,-1069.3685
+0xb207031da5ef9cbded418e6b5b3c5eee24a3a7b22c6ec10053cbaaa67d793796,Will Luka Doncic win the 2025–2026 NBA MVP?,174,False,open,888.0128
+0x4b02efe53e631ada84681303fd66d79ad615f3d2b6a28b4633d43d935f89af58,"US strikes Iran by March 31, 2026?",173,True,Yes,-39833.8533
+0xcbf9e16f0ad8bef39c3860dda598df8c4906f737bbed4dc1c65f7e0c07675ab3,Will Anthropic have the best AI model at the end of February,169,True,Yes,-630.641
+0x101c26a9ff336abf4dffeb109dc40b92d9f55882dd471e57ee875794a6561bf3,Will Marty Supreme win Best Picture at the 98th Academy Awar,164,False,open,21.064
+0x19da64a3f1b53b26b99bee3bb130d763e92e9f5f78436cb914b40f476665842d,Spurs vs. Pistons,146,True,Spurs,-13630.4758
+0xd405c18b0df642e7f06aadf359183cb8208c1ff6b3a3bca3f8206dca2eb9532e,Will Hamnet win Best Picture at the 98th Academy Awards?,146,False,open,28.471
+0x1d54eb5eac2cee8f595f3097c65da7d07f8ab5dee63d7c0c6883eb70e1e9af30,"Russia x Ukraine ceasefire by March 31, 2026?",145,False,open,-35.6155
+0xd6c49a94948e365aa74c09eef54d907b7ca534b243c387c375305d5cdd1afef3,Will the Fed decrease interest rates by 25 bps after the Mar,141,False,open,-227.9044
+0x8a38e9511fe17e13fa7c3fc65923983c22d4d494b69091fad0107637a7cd1e32,"US strikes Iran by February 23, 2026?",140,True,No,-5064.043
+0x3192d8e0d319091384dafe526e42ba0ba48e127b4424522429a0c75df712beee,Will OpenAI have the best AI model at the end of February 20,136,True,No,25.1201
+0xe5535e41e78edb730150ac1a497fbef7cef536022168771cb51a6b702705ebb1,"US strikes Iran by February 24, 2026?",134,True,No,46.3448
+0xc167c3f85a9c2e76e1b0528d1dfef01a2616d8f498647d6cbc4b56e89690ff7b,Magic vs. Clippers,134,True,Magic,-8553.3376
+0x4f3421fb2daf5cca7430ed8d8132463963081572d75434393a1808fdb8829fe8,Will Portugal win the 2026 FIFA World Cup?,133,False,open,-3.064
+0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75,Will the US confirm that aliens exist before 2027?,129,False,open,839.048
+0x1b9cfd142b849edf7a886364d9821f7e8049cf7648e97c73f05e68827f516e2e,"US strikes Iran by February 19, 2026?",128,True,No,109.0517
+0x1f14be72544e1f15d1ff65f1086a2418bdb595902d091ed48590ff791893b331,Will Elon Musk post 300-319 tweets from February 13 to Febru,126,True,Yes,525.9664
+0x797d586ad45522306490b0cc9b2f21bdf957f3843476fae99f3bcc2cec83b74b,"US strikes Iran by June 30, 2026?",124,True,Yes,333.949
+0xddcfd0baea9146bf38a67b32d9115e65784d881308f1799b531d9f237e271c2f,"Will Bitcoin reach $75,000 in February?",123,True,No,-518.152
+0x08827e84aebe943050a9738a9cfa04fdd67ee7a87f919e7f4fb6479a0acd3ef4,"Bitcoin Up or Down - February 12, 4:00AM-4:15AM ET",122,True,Up,689.162
+0xcd2640464754b9a894ffec98ac11554fdd507ea89ca01237eabb3a6de4a606e6,Will Kimi Antonelli be the 2026 F1 Drivers' Champion?,121,False,open,-9.8618
+0xfee07be730188c94cd3644ed6f107fa3ea2dfab9989ce8d39aeeae064766abe3,Will Jon Stewart win the 2028 Democratic presidential nomina,121,False,open,-6.4335
+0xb1195b23733dfbc75364d8a46f49f18a612cadeb2b5eeba35b8a8ae62b2c2598,Will Meteora be accused of insider trading?,120,True,No,2753.3832
+0x2e3fa4234d88f072e0d7a1fa0fc636838402a5fecbde20216b547b54997a8eef,"Bitcoin Up or Down - February 25, 12:25AM-12:30AM ET",120,True,Down,1047.4089
+0x06b611865074cab0ee2991b62be17149ea4912e9cbde167639f2ee882ce28428,Will Canada win the Men's Ice Hockey gold medal at the 2026 ,119,True,No,11832.4006
+0xa793aadf278b2c2e7b38014f7dde265e6cdd6db6f6fc5ce70a50b5ec674c01bc,"Bitcoin Up or Down - February 25, 7:20PM-7:25PM ET",119,True,Up,-48.5035
+0xe57fce6d333b67f7fb948464a393689ef410fe70dbded0f2f8bce59ffb205355,"US strikes Iran by February 22, 2026?",119,True,No,-1114.072
+0xe00d6ce6106b54b8f13fbe935e529ea7aab9e3ace9ae3fcc4f7c65372eb0b8ef,"Will Bitcoin dip to $60,000 in February?",117,True,No,2452.1716
+0xfda648d24cdad32dfe959195bd75ef4c81fbea5130eb6c7a4a0c18607a11ce63,Will the Atlanta Hawks win the 2026 NBA Finals?,117,False,open,-5.5032
+0xb3fefe9667acca5ca31a8e330219dc67a01b374331d9bf4875357655a5508815,Will UNRWA win the Nobel Peace Prize in 2026?,116,False,open,17.7502
+0x895e01dbf3e6a33cd9a44ca0f8cdb5df1bd2b0b6ebed5300d28f8da7145145e4,Will Donald Trump win the 2028 Republican presidential nomin,116,False,open,30.5832
+0x680efda99a9c43cae7a318972ec3156a6b100b48a43d12478bcbcea85eb58ed7,"US strikes Iran by February 26, 2026?",116,True,No,615.2853
+0x4c96c7e8460b8f9c4469483ddfa4d029c94605138dfcd4ab8f4891f79c2544d2,Will France win the Men's Ice Hockey gold medal at the 2026 ,116,True,No,-29.62
+0x4e38d8ca6f9bfe8a89d848903443edb6458e2f3ff93aded0a4588ec2ff38e7af,"Bitcoin Up or Down - February 13, 6:30AM-6:45AM ET",115,True,Up,45.6447
+0x43193f1d434786a3f32fadc77ef5d2a34d83901d6387ed184952a4e47bb34b16,Will Manchester United FC win on 2026-02-23?,114,True,Yes,5759.3569
+0x16bfed4a96ae585774757223b661e7fdc32571a2a053c7a520035861e7826ae4,Will Real Madrid CF win on 2026-02-25?,114,True,Yes,8200.7861
+0xe21adf09af65e58401fda4017199d1a88ecd9d83e79ba186a67e1c82785d1ae7,"Bitcoin Up or Down - February 25, 12:40AM-12:45AM ET",113,True,Down,7.8704
+0x9dd56ad8218d751ff5ac3e140788ea7311a88969450c63009205a05147ad7f97,"Bitcoin Up or Down - February 12, 4:45PM-5:00PM ET",112,True,Up,-382.7848
+0x6995678ed5f481941cc4de37512cfe77b1b20e6fd9ba35e284360061d2687d8f,Will Google have the best AI model at the end of February 20,112,True,No,-820.754
+0x06cf51eb4111f84cbdca48c989bfd126028d74ea1d0e5b17429cea07adc4a154,"Bitcoin Up or Down - February 12, 11:15PM-11:30PM ET",111,True,Down,432.8431
+0x0c539473c98c3b461bfd0948fb9bfce90246aa32031447004236350474729b77,"Bitcoin Up or Down - February 16, 6:15AM-6:30AM ET",111,True,Up,-149.1175
+0x8a9e31d88af7b0c085c8482e6daa2cf1034794d8b724de19c1c5673cde6d496d,Will United States win the Men's Ice Hockey gold medal at th,111,True,Yes,-33.7082
+0xfc575fe49537c923f9aabf87f636f4949360bc6bab41b0f60b4f0f12ad9c98e6,Will Elon Musk post 240-259 tweets from February 10 to Febru,111,True,Yes,483.7911
+0x804bc34275d7d610dea3293c06105e925ebfcd6e454813aa27d59a882d50e86d,Will Axiom be accused of insider trading?,110,True,Yes,-5947.5389
+0x2571face33de8d5c3541fb569c10af59bb80fa909e1469af1c35919803943ea6,Will Tottenham win the 2025–26 Champions League?,110,False,open,56.8607
+0xa99402b3e4e198e75487baab69d97e6fea09850811ca2aae173048bd8f130c1a,Cavaliers vs. Thunder,110,True,Thunder,1017.0212
+0x251414e69496afa38de1dea0c56f84f81d166cff3fff3f73f081a60617a9ecb4,Rockets vs. Hornets,108,True,Rockets,-1911.5103
+0x4914bfdd892a48c341b5e0f41ec10475a815f2277273110b16f95e21084bfe75,Will 6 Fed rate cuts happen in 2026?,108,False,open,-5.9759
+0x5e5c9dfaf695371a0cc321b47b35f66a6dbd1482f0503526603d2bd2a91bfdc7,"Will Bitcoin reach $150,000 in February?",107,True,No,77.8277
+0xe9bcae53c3e8621733f58a9f8517e72b1af01690fa010cf90d4589c238874483,Clippers vs. Lakers,107,True,Lakers,4356.3144
+0x337df56989ae74f9af2368017dff1fa5074a4906a6d5784737e5826a191d3723,Magic vs. Suns,106,True,Suns,-558.9303
+0x168959e2c7e997109d9bb7b6dd4c51d8a4f4fb0d8a65eb2b034d29e1240b15e1,"US strikes Iran by February 25, 2026?",106,True,No,-2653.4308
+0xf8ce0003ad658f06891e30bea1da4ad188884cdd933367099c8d121ea671bbd6,Will xAI have the best AI model at the end of February 2026?,105,True,No,202.8238
+0xdd84a0f9830eb540be5cd7a22bcaaa27aedced37c7994c480f95669a341f1c4e,Will Greta Thunberg win the Nobel Peace Prize in 2026?,104,False,open,-9.0618
+0xee483d462c5ef89bfb5e7662abb62714354a0f6f3a6c6c0df74933607ae9b81b,"Will Bitcoin dip to $55,000 in February?",104,True,No,-296.8811
+0x96aba876fd78029e7dc00382d77cd0092b6c415ea0a8a1ca7cff5919eac0551b,Will Elon Musk post 340-359 tweets from February 17 to Febru,103,True,No,1206.2723
+0xdd8ac76c146682fcb09801f7537c481c858e607ab5bedf59230460f3fdfd648d,"Bitcoin Up or Down - February 14, 5:30AM-5:45AM ET",103,True,Down,-380.1268
+0x4ba75b7d9b0c73cf53a18b7f1a8cbfdb0146e0555899bd17a081469c206a019e,"Bitcoin Up or Down - February 20, 12:00AM-12:15AM ET",103,True,Down,-275.156
+0x5ee8c736270c36d314a3db86983eca6da7de3f4e24a7dcddadfa9aa2c258ce38,Bucks vs. Thunder,103,True,Bucks,-3931.4092
+0x0b8d965e7bc5a911a99408716dea8cf5d5a8689a8fc4b1f5aa113a34db8f06c2,Will FC Barcelona win on 2026-02-16?,103,True,No,-88509.0851
+0x98c0aa27e741d5bfeb0a06e68bddd256b857fd27597c76c500250db1483c51aa,"US strikes Iran by March 15, 2026?",103,True,Yes,-3686.8314
+0xf7ebe673ed7e71d3846b4f0c74065351d9f7f2717088ea2a517d86ef0d02c7a8,"US strikes Iran by February 21, 2026?",103,True,No,-640.8156
+0x8be5e2483a67e35acdf7dd73473818b57cbe5b1d9a7f1e68953f6ef8d10cede2,Will Elon Musk post 220-239 tweets from February 10 to Febru,102,True,No,171.9842
+0x8c8381b9160bd8982e044eeaaf544fa62ad911a5dd58577492e1defb10c8b6b8,Mavericks vs. Lakers,102,True,Lakers,2362.6462
+0x8733e4ef3b449ef79e86ce37ca53ccba3377c5e77d3473e55f867d0fbd80edba,"Bitcoin Up or Down - February 17, 2:00PM-2:15PM ET",102,True,Up,-287.099
+0x01dd8795176ff3add669f0c5be2bbba86ef480fe25ce165ba1bda063d91304f3,Will Elon Musk post 360-379 tweets from February 17 to Febru,101,True,Yes,555.0129
+0xae358c57db7eef653d96619564a246df206ef933770470bca1bd2246a831bdb3,"Bitcoin Up or Down - February 13, 7:45AM-8:00AM ET",101,True,Down,-424.2727
+0x35129e7ee024af7040f030556522db6c1f38480c165f97702a78cee95310b41b,"Bitcoin Up or Down - February 12, 11:30PM-11:45PM ET",101,True,Down,-705.4558
+0x89f7ab99b2e92dabad6465ebcb064bd7b912ec59702f387bb47ba8e12aef00d4,"Bitcoin Up or Down - February 13, 4:00AM-4:15AM ET",101,True,Down,205.2204
+0x8d2df65bd55135c16f772132dc4e01b6a7281d19ad6c7851ac244a02047d0b89,"Bitcoin Up or Down - February 12, 9:30PM-9:45PM ET",101,True,Up,-139.4146
+0x2d84c414b6e8176eb9bae2d7c464b7f389e3cc5b135b9139b243475ef569d4f7,"Bitcoin Up or Down - February 13, 5:00PM-5:15PM ET",100,True,Down,-333.8909
+0x8a0bdceeb16c0f2ee8102c4777c6d22268f5737713a2837594093305d90202c9,"Bitcoin Up or Down - February 13, 10:00PM-10:15PM ET",99,True,Up,-98.593
+0xb482d8783530f5e158b18b3ea0cc5e457337aa8f131cee54777bbd64982f5142,Will Elon Musk post 280-299 tweets from February 13 to Febru,99,True,No,187.6228
+0x9d656c2803f8d86fffe8445acc60e9dd5640ffe41b0e89ebdd7dc32c510078e1,"Bitcoin Up or Down - February 12, 5:00AM-5:15AM ET",99,True,Down,17.355
+0x9be56371f6a29d12769b2f196847ee825b9585ebb8bfa042136be031b081eba1,Will Netherlands win the 2026 FIFA World Cup?,99,False,open,-3.5959
+0x81045cb4766dc733fd38aaf541e2444afd23a49a90254b9fa7382812b7055fc4,"Bitcoin Up or Down - February 13, 2:00AM-2:15AM ET",99,True,Up,565.168
+0xf5f6785bdee0b2e6f665e06f997a1f03bb71f2582863ae2d3c03718b5c7e8200,"Bitcoin Up or Down - February 18, 6:25PM-6:30PM ET",98,True,Up,192.249
+0xc4f120c90f06aeeebd332a5e2f73debd0c7d922fe502a68623c7eb6d94a4e989,"Bitcoin Up or Down - February 12, 6:00AM-6:15AM ET",97,True,Down,-2464.6958
+0x36db77c539bcc8c7bf0686c1b99f30c5a5eed1f53d3b3a27a071550c81f83701,Will Mark Kelly win the 2028 Democratic presidential nominat,97,False,open,15.2172
+0xd4e77ba6f29fc093509d24f508631abd445ecf506bbdc9c4c80e60256a318527,Will no Fed rate cuts happen in 2026?,97,False,open,5.9674
+0x6140f20a08ce33f3ab0c0f0db5294675baaf06f1c191750fdef01041bb4bcb7d,"Bitcoin Up or Down - February 25, 4PM ET",96,True,Down,214.9542
+0x5346538cbfc880da50fe6b269a47e4f7cd8a38b2b120d85b1bc392d8cde6ced4,Nuggets vs. Warriors,96,True,Warriors,-491.5365
+0x82e64056d7a94b811f3e3bf5cb6f4ecd6a59c5ffef452163b503b79374730dbc,Kings vs. Grizzlies,95,True,Kings,8130.7708
+0x6c1ca8f5007f4f9ae14ecfbf490d616501952ec828face21cd5896d123769f2d,Will Elon Musk post 260-279 tweets from February 10 to Febru,95,True,No,193.5608
+0x9954b4eef49a268b810bc260ee9278361e29a8f6f4ad816a804dd613ef73a968,Will the Philadelphia 76ers win the NBA Eastern Conference F,95,False,open,7.6986
+0xba1bf45de05559eba89628d1a4eff552f7d745400f8ffa62b6339ddf7c02a5d5,76ers vs. Pelicans,95,True,Pelicans,-1464.1013
+0x08f621a320984667b27be655742de9f21390dad86a487b2b37e64eb26532cd74,"Bitcoin Up or Down - February 13, 4:30PM-4:45PM ET",94,True,Up,539.5727
+0x017907c1adcf76337aa82a17b2af4ed522c8bce6a322cb3659e07d4e39c30196,"Bitcoin Up or Down - February 13, 10:45AM-11:00AM ET",94,True,Down,-175.4252
+0xd6544bb4119990c95f46bf155efccadc9cb5453961f4c644cf874d074bc10533,Will Elon Musk post 320-339 tweets from February 13 to Febru,94,True,No,-512.1245
+0xff7e78f7a66c8b2ee3f68b1b298ad77817f98f7c692d3405db276e8ac961b52b,Thunder vs. Raptors,94,True,Thunder,-10954.5038
+0x4a9d58d4da874e26708f5bdb014eb07a06aeebb927068d169d43831595386557,Will Donald Trump Jr. win the 2028 Republican presidential n,94,False,open,-2.7232
+0x5a40a6cb1b928b0528d992d34a6022cae13fcf745de10dee4d2b7ea333d8e3d1,"Bitcoin Up or Down - February 13, 1:00AM-1:15AM ET",94,True,Up,68.4023
+0xfdab635cf23d9c87d079f673d367a61da56e2789e1f1aa82af3154cb92855390,"Bitcoin Up or Down - February 26, 10:20AM-10:25AM ET",93,True,Up,20.8698
+0x9c0cc26f40f1c2f201ecf13604fd5b9ed37ad052fb836df4597689ebc5226fdf,"Bitcoin Up or Down - February 20, 5:05PM-5:10PM ET",93,True,Down,-133.4371
+0xa475bef757e8a4b31cd856e53e2226a283da69cf78860a66351a069d91b7a133,Knicks vs. Bulls,93,True,Knicks,-2701.6044
+0x0d082a85f48a5226b1205acdb6e95ead2fe373acabcf6c471f5895f86f42a276,Will the Minnesota Wild win the 2026 NHL Stanley Cup?,93,False,open,-64.5362
+0x5550566fba7a77aa184490c12491b978a8ddf1a4f31c98f88c2bda093a67a0d5,"Bitcoin Up or Down - February 25, 8:45AM-9:00AM ET",93,True,Down,-644.7218
+0x083407e67a3e7557662729281ace9c5790e6becb270c05a09c44eb601d593086,"Bitcoin Up or Down - February 26, 11:55AM-12:00PM ET",93,True,Up,-88.625
+0x203be6b7dd7135f5313688151c9bd6a35afa92e0210b6c018f04dd243265b58c,Will Finland win the Men's Ice Hockey gold medal at the 2026,93,True,No,173.8827
+0x57a084fdce0712222be28b7aea198fc7558dbd3328cee26ab05e21bc6d919e42,"Bitcoin Up or Down - February 21, 8:30PM-8:45PM ET",92,True,Up,-699.9939
+0xd94be4e0752ab2583cce6f026b2fe57aedb9eb0b2db6f488f4fef59bd91c51a8,"Bitcoin Up or Down - February 20, 12:35AM-12:40AM ET",92,True,Down,201.4894
+0xedd075ee9779193cd33c31caef9b05ee25d4ffaa7bb243b4274f21abcb518050,"Bitcoin Up or Down - February 13, 3:45AM-4:00AM ET",92,True,Up,26.9523
+0x0504c4a3226f54fad3d75f38303a18248ace234bb6bb4663b67b2421d2591179,"Bitcoin Up or Down - February 17, 9:45AM-10:00AM ET",92,True,Down,12.3981
+0xa31754e4e3d25202e95d88d99c52340ab5f4fcf03deb3006972fb2102af12c8d,"Will Bitcoin dip to $50,000 in February?",92,True,No,-1061.4887
+0xea0f617bdce3b71d67cdddd440296c02bce98c6db76f485c7c05669260291e0f,Will Elon Musk post 240-259 tweets from February 13 to Febru,92,True,No,-390.2189
+0xc476b786afe65ae865a05fad1bf06a11de92c57c3b4eaae4adfddcd0983c20ce,"Bitcoin Up or Down - February 24, 2:10AM-2:15AM ET",92,True,Up,109.4897
+0x70909f0ba8256a89c301da58812ae47203df54957a07c7f8b10235e877ad63c2,Khamenei out as Supreme Leader of Iran by March 31?,91,False,open,39348.6674
+0x4ddffdae2038a1f68fa3a1ef927ff832825eb83f6eccd5d78f4830c44c586daf,Will DeepSeek have the best AI model at the end of February ,91,True,No,147.8442
+0x70d9dd2498471e4e31e280f832207dc8ba20eaede2762cca42b74f101675250e,Thunder vs. Pistons,91,True,Pistons,-2025.8975
+0x909659c9436228e2be56d5582ba6188166f2f8bf3c596335512c8f2e380d01ec,Will Kamala Harris win the 2028 Democratic presidential nomi,91,False,open,-0.8788
+0x76b15d691abeeccc4477367a40725950113ff54230e09e959474fb8f137951c1,"Bitcoin Up or Down - February 13, 7:45PM-8:00PM ET",91,True,Up,-179.0553
+0x8455874d09fc8566093fcc7ab1e4c30d001a7889218be11a7057512b23ea3a65,"Bitcoin Up or Down - February 13, 5:15AM-5:30AM ET",90,True,Up,-861.0591
+0x761d147472a51c85d83a4a06e27cfb7f6ec1c9aef5e5e35505c81a49fb53bbec,"Bitcoin Up or Down - February 14, 6:30AM-6:45AM ET",90,True,Up,-13.7206
+0xd602aae70b06ae0437c071f0cc9eceefaf098071e0bc9a9d399755880d5ac78f,"Bitcoin Up or Down - February 12, 6:00PM-6:15PM ET",90,True,Up,-241.3708
+0x6fba1372ea74143dc46730796a15c943f6a91ff0bae180490ab6930e7d716770,"Bitcoin Up or Down - February 12, 5:45PM-6:00PM ET",90,True,Up,97.0698
+0x56609ed3fff1b1da57a2b24346f24105c60dc5c43608ee759242a920dc276c69,"Bitcoin Up or Down - February 13, 2:00PM-2:15PM ET",90,True,Up,-28.4659
+0x1a1f11e5e3396eae87490f12fd6fac8e09dfe86d876059ef5bcce84d65171ec4,"Bitcoin Up or Down - February 13, 1:30PM-1:45PM ET",89,True,Up,76.1848
+0xd2c08c728c63fa52f194f72038a068fcc5d283e89d605e3073972721262922ec,"Bitcoin Up or Down - February 12, 12:00PM-12:15PM ET",89,True,Down,182.3064
+0x634606b564832072616d792f8b6f0ba0dc36c5d32dad545ffd8aa90a1ce3e456,Will Elon Musk post 280-299 tweets from February 10 to Febru,89,True,No,-161.6281
+0xfaa0884cf5aac7c9d65c74d6e35b26bd16049478c3b349b588acf03777dd88b6,"Bitcoin Up or Down - February 18, 8:15PM-8:30PM ET",89,True,Down,-196.1283
+0xb3298af85e00aafad937c119444a5f2800a55343b7482eb75581f6e454432501,Will Kamala Harris win the 2028 US Presidential Election?,88,False,open,-3.6424
+0xcccb7e7613a087c132b69cbf3a02bece3fdcb824c1da54ae79acc8d4a562d902,GTA VI released before June 2026?,88,False,open,-171.5806
+0xe5e57a570056e363a16129a3985cedcdfcb484d0d799a5f527a43baf31a11bf9,"Will the US next strike Iran on February 21, 2026 (ET)?",88,True,No,-286.3694
+0xd6203f8805d1812e3b189da3f6036989940a415ae3a0fecf83555b455394fdb8,Will the Toronto Raptors win the NBA Eastern Conference Fina,88,False,open,-12.8482
+0xfeb804da3b1e167beb8ad990c05506cb5f6cbfa3235f58312c88096e81fc2562,"Bitcoin Up or Down - February 13, 12:30AM-12:45AM ET",87,True,Up,-679.8263
+0x223997eaa7c160def6c9a0c71a8808d09dfacdecedce8e4f810b7569cb1284de,"Bitcoin Up or Down - February 12, 3:45AM-4:00AM ET",87,True,Up,-141.8723
+0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced,Will Renan Santos win the 2026 Brazilian presidential electi,87,False,open,7.1375
+0x27ba3ef229b775f9010ace9f8cc1154c7debc83d87944ba22997549aff7a2e1d,"Bitcoin Up or Down - February 12, 11:00AM-11:15AM ET",87,True,Down,36.4781
+0x332e24ee562089eb6a807487dde3fca6e79980da9229102c015c0e98dab5f375,Will Elon Musk post 340-359 tweets from February 13 to Febru,87,True,No,225.8077
+0x0d76bdccd2d21d2d67eaa62d57156b883915fd147bd6d2827fc86ca1e3468603,Nuggets vs. Trail Blazers,87,True,Nuggets,3412.825
+0xcdb50efdae39e3ad3c381f77e7b036a9678f174376f0bb7c04e6ba3cd93d7bb9,Celtics vs. Lakers,87,True,Celtics,-5511.4321
+0x3baeec488306c58d03fa15214b0bf41abc7e38a8a99ddfab60fb094c8e01221e,"Bitcoin Up or Down - February 25, 1:40AM-1:45AM ET",87,True,Down,172.5579
+0x90b1f443682b11b8e8f0df451f1ae217d4595febcdfe93f5d7a56b855a39b95d,"Bitcoin Up or Down - February 13, 8:15PM-8:30PM ET",86,True,Down,65.9099
+0x57144baca8bda442220a6b6f915b995f5ee03336ba6611c99f0151c0e52068e9,"Bitcoin Up or Down - February 14, 1:30PM-1:45PM ET",86,True,Down,-156.8405
+0xc0e5e40386a753109cd818c4689b4ab19ff2c7fc2fa60152ebaf41f46516b7c0,"Bitcoin Up or Down - February 12, 7:45AM-8:00AM ET",86,True,Down,-413.4888
+0xa95694b860a76e85d7e4eae1efe940e71799b809f1e5d8240de59a7d8377b7e1,Bitcoin Up or Down on February 17?,86,True,Down,-3508.3522
+0xf8f63bb47b2a7c2e0c1be3cedf4075079b11c07476d76a9469065b0c4791961a,Will the Colorado Avalanche win the 2026 NHL Stanley Cup?,86,False,open,-459.5487
+0xa59bb6bb91e5c1e4d533864520fbd3bb75d6d0ebb813b4cd8a8b88479bfa8966,Will Carlos Roberto Massa Júnior win the 2026 Brazilian pres,86,False,open,-3.9289
+0xa4a3793e6d76515886e61b6acb0ee1bad7cfc8654886847d07bca67a8da63c32,"Bitcoin Up or Down - February 14, 4:45AM-5:00AM ET",85,True,Down,60.4145
+0x7cdb2504f2b5c28598efa93e349169c122c51289ed64fcec816ebed49377076c,Warriors vs. Pelicans,85,True,Pelicans,-3519.1926
+0x98d80eca2793124db7bb1bb6ba1e91a87e1df52cbd1800402798f9aa4a421163,Spurs vs. Raptors,85,True,Spurs,-4524.0926
+0xcdb88dc94c7800e02f770a7f5847fb8c2ceddf75422e69ea149808db2c030a5b,"Bitcoin Up or Down - February 18, 1:30AM-1:45AM ET",85,True,Up,88.7289
+0xf9608e8aca8895644b052eb47d0963105d4bc083f6409bc887a6eb9a016a6080,"Bitcoin Up or Down - February 24, 4:30AM-4:45AM ET",85,True,Up,209.0895
+0x5cf04439b971c9a21553fa0fc9b02888899ae86a121f826923086478f8830fb1,Trail Blazers vs. Jazz,85,True,Trail Blazers,597.7472
+0x85689806283b5394ab314504c5733114e193d570a4f3435022e44231062497b3,Will Real Madrid CF win on 2026-02-17?,85,True,Yes,13059.2311
+0xd4bbf7f6707c67beb736135ad32a41f6db41f8ae52d3ac4919650de9eeb94ed8,Khamenei out as Supreme Leader of Iran by February 28?,84,False,open,-55764.5984
+0xf47878af65b34f7c38df6ee58f097f9fb0cfaaf75f8f75c15b1eca8899de2343,"Bitcoin Up or Down - February 26, 11:40AM-11:45AM ET",84,True,Down,-28.3559
+0xebbc44dde2ef2b74473369a64dd0ea1a55fb2c98b2bbf87c36431a913c11ddd3,"Bitcoin Up or Down - February 17, 1:45AM-2:00AM ET",84,True,Down,66.2671
+0x8095f97119fe5aaaa9fcaa5895d5f1ad6dfac0aa942437ba9075a28a34d26902,"Bitcoin Up or Down - February 13, 7:30AM-7:45AM ET",84,True,Down,757.9353
+0xea5aa004d2907aacfffb62e601f160d5c1805f37f7565e3e9640b58cff70bb0c,"Bitcoin Up or Down - February 12, 9:15PM-9:30PM ET",84,True,Down,-781.4149
+0x33fe3ca0bcb7f9db743c67ab9a4f9267afa812ceb0dffb11b3c60c9966f77ac5,"Bitcoin Up or Down - February 17, 5:45AM-6:00AM ET",84,True,Up,-286.2984
+0xdef7e4ce6b94668eaf51785afb6978740cb24bb7cce67880615d37b00ef7d5ba,Will Elon Musk post 260-279 tweets from February 13 to Febru,84,True,No,99.2844
+0x5db22593bc7a04d75c48057f5c4f3da15fee8563929a60551ccd9deaf720f0f2,Bitcoin Up or Down on February 18?,84,True,Down,-174.8366
+0x626b409b1f13de5be74909e79c9ac7f0d929977338411018643cc1b866bd7870,"Bitcoin Up or Down - February 17, 10:40PM-10:45PM ET",84,True,Up,-50.9876
+0xe39adea057926dc197fe30a441f57a340b2a232d5a687010f78bba9b6e02620f,Will Gretchen Whitmer win the 2028 Democratic presidential n,84,False,open,-22.1067
+0x2bf6f2697e123f9bfb2c8788ed35741c67159ed19374886e6e7cb3f35e60f855,Will the Orlando Magic win the NBA Eastern Conference Finals,84,False,open,1.3836
+0xa860069bb5d5b0f91a006eb04ca02f761e5840508f3585eaf174f05d257a5fa2,"Bitcoin Up or Down - February 12, 11:45PM-12:00AM ET",84,True,Down,-941.1522
+0x548cf0cbd8eb449bb0cea1b27863719884df6623b90888c18e218d8eb72a926b,"Will the price of Bitcoin be above $64,000 on February 24?",83,True,Yes,1147.2374
+0x78541e7dbc150ea9890d66616fd120466ca85bc0ffe07ed58cf355dab05f8b58,Celtics vs. Nuggets,83,True,Nuggets,2245.4918
+0xae77a1fde03bf8467e570ead294428936f481a060102cf43c57b651526025e2b,Magic vs. Lakers,83,True,Magic,-26670.169
+0xb2fccea27adba8d5bd55e960a3d3460f3574e81f86c6c2f92f5c121fdaaeeb15,"Bitcoin Up or Down - February 14, 11:30PM-11:45PM ET",83,True,Up,-396.9357
+0x89cd8a61cb62a72dac72000f7da5a4232b25f8130b29ef3ed7d3f31b2ec738ce,"Bitcoin Up or Down - February 24, 9:15AM-9:30AM ET",83,True,Up,-108.389
+0xfb1835b887c33862f5749c619e612d1244ab6e66115f0ef43d373485dc3a1573,Will Manchester City win the 2025–26 English Premier League?,83,False,open,748.9895
+0xebef3c032d4c4f7372bb6b11084458367e9e8cccba8c0c190d5d8c3da67d72a9,"Bitcoin Up or Down - February 14, 1:00AM-1:15AM ET",83,True,Up,-525.4097
+0x53e563b035b466369c6d05a9dea8cd4d8500f435dbbb6f3d5e4ec85628bde67e,Men's Final - Canada vs. USA,82,True,USA,52219.0163
+0x1829d1ff26b435c3e2d60729f1efc2e7d8e0e31b73bf39176e64ebaefcf87d95,"Bitcoin Up or Down - February 12, 6:30AM-6:45AM ET",82,True,Down,79.1245
+0xd4b790a5fbe775081f11e1ff8fc6efe489c73f24cd58ddb363adf086295ee48d,"Bitcoin Up or Down - February 12, 6:45AM-7:00AM ET",82,True,Up,-302.3035
+0x832338b70f5276b81cfaced945e47847adb993d3934ac7fa61666fa43e9bae14,"Bitcoin Up or Down - February 24, 1:55AM-2:00AM ET",82,True,Up,377.5838
+0x46120278a41b94df83348c4d8cb676e1fd1cfcca85e0f6733f82a04ed11a008a,Bitcoin Up or Down on February 15?,82,True,Down,5788.2681
+0x0cf31c8ccfab293de74b59275b969a627d6cff53ace0b8d7655046b3ad4bd44f,"Bitcoin Up or Down - February 24, 11AM ET",82,True,Up,-162.4442
+0x6e2b3befeefa77634d709a759f7c77357e5e54c7f703c7b316cb13ac336eb020,"Bitcoin Up or Down - February 16, 7:05PM-7:10PM ET",82,True,Up,-305.9406
+0x6f9a3ae61a94617d46be0e2bcb3e1e0ea133380bb933c6bbf545c51ffb6ffba1,"Bitcoin Up or Down - February 13, 1:15AM-1:30AM ET",82,True,Down,-298.2312
+0x7e0faff600f580ccc9d7dffec2bb8ae7662e0f66736ed50379be2ef5068aaa92,"Bitcoin Up or Down - February 16, 11:00PM-11:15PM ET",82,True,Up,299.0315
+0xec11ddb9a8d07c6561cd5d2b374ef3b4f62844c7b2787477c08c093092c6a23a,"Bitcoin Up or Down - February 25, 3:45PM-4:00PM ET",82,True,Up,-117.7902
+0xc425460121141efda48994bdd8991fddb7c145f31591b1b114cb6a7b029e4404,Will the Houston Rockets win the NBA Western Conference Fina,82,False,open,-9.564
+0xe16f7cd04d2419c95ffa0b3be8f2d4716bed83574cd72ba777a702fa9451f315,"Bitcoin Up or Down - February 17, 9:15PM-9:30PM ET",82,True,Down,175.9404
+0xcb5ba11708314dda67c05e9862a67e2f6485cc7ddc5078d39fb076f7edc6ab8e,"Bitcoin Up or Down - February 19, 10:15AM-10:30AM ET",82,True,Down,-154.8584
+0xece194b83dba811c752120b6493e7ae2a702eba738abcf0de9fcfea37f1a2ac4,"Bitcoin Up or Down - February 22, 4:50AM-4:55AM ET",82,True,Up,-317.6033
+0xb7ad240be751fea752ee7fb0f6d246dbbe71c0997bb6c7dc25767b6e47e0c0bc,"Bitcoin Up or Down - February 12, 10:00PM-10:15PM ET",82,True,Down,151.7817
+0x64d31a2af85518c6718a5757a35b840f08eca20c1e22c0eb1e96ec01cc55b8b6,Will Ron DeSantis win the 2028 Republican presidential nomin,81,False,open,-1.8984
+0xab753db7d33c5e06a6b4c2ad0aa59844e8481328c33b16115a66e84e7455c00e,Bitcoin Up or Down on February 16?,81,True,Down,-1287.6547
+0xc2ecc146cbbc8f24186766ef0b2cd56a1757227aee4cc9f951920538769a3490,Will Chelsea win the 2025–26 Champions League?,81,False,open,-11.7174
+0xce26a070d5bfc517b8af22c61250768cd89566c61158d68e44b6202c475eb6a8,"Bitcoin Up or Down - February 14, 6:45AM-7:00AM ET",81,True,Up,42.433
+0x06dd1b616803bab24ff7b640dfd2c1ef15f07aa57424214496cb587950c979e8,"Bitcoin Up or Down - February 17, 6:15AM-6:30AM ET",81,True,Up,307.6611
+0x476e8e6c7ba22f71dc6a28ef94b4215afac6e0154fa291413ddb71dedee4a8a7,"Bitcoin Up or Down - February 12, 11:45AM-12:00PM ET",81,True,Down,315.2249
+0x4d21aecaa3a3cf87a31614faeed9b08cd623440d9bc4208c7311d23522050776,"Bitcoin Up or Down - February 13, 6:00AM-6:15AM ET",81,True,Down,-207.0724
+0x7f4e6bbb540d399d875cc70d5251e7b1fd32f32e886295d866dd93bbd222da6d,Rockets vs. Magic,80,True,Rockets,2965.6057
+0x7e3d10f40cefbe2f2ac8c94387a8c433204adf35c96db2ce773f5284022b8bc0,"Bitcoin Up or Down - February 18, 9AM ET",80,True,Down,74.5218
+0xf88894c3c245316f9b838782093b968429b32852255c12472473325d4c25ed38,"Bitcoin Up or Down - February 23, 9:40AM-9:45AM ET",80,True,Down,-1594.0844
+0x24b1e96b441e54c1e87e05313fb696048cc30b7f940b523fc9056e5e7f0c2c59,"Bitcoin Up or Down - February 13, 8:45AM-9:00AM ET",80,True,Down,-78.5231
+0x84516d8269006642656745a3ce48aefea921a65316072487edb416efbe1634d0,"Bitcoin Up or Down - February 16, 11:15PM-11:30PM ET",80,True,Up,3.7732
+0xcba24842ceac7a40d2a8b9adde1f4407999b6505193b9fd68156ae76fbffa706,Will Arsenal win the 2025–26 English Premier League?,80,False,open,-446.8597
+0x68b1914761da6c1c3e1a40e673e630906eaa7ee4cf1edb1f7f59a45b72d51574,"Bitcoin Up or Down - February 13, 4:15AM-4:30AM ET",80,True,Up,-614.1326
+0x23969ec06514ad241fda435742187a08c1b2b2d0b5080f0c0751c9dc0f2d886b,Puffpaw FDV above $100M one day after launch?,80,False,open,369.6318
+0xb210f491fa8b8b48ce40b9dbbb043bcb74db214d1473c0ebce11d324484381bf,Warriors vs. Grizzlies,79,True,Warriors,-927.1785
+0xc917a828f381eef1142d3ede4e6269d5110b7d30e9f5df41bd79ff0be554c115,"Bitcoin Up or Down - February 22, 5:45PM-5:50PM ET",79,True,Up,-314.0064
+0x4c96e66e02e46230c2ab3ed467f309a27a68213e610e8ebf233614f4803818d1,"Bitcoin Up or Down - February 17, 9:15AM-9:30AM ET",79,True,Down,35.6207
+0x4c3b73f3074ab92e595e64493b5a659709459d5cc58be365e7c586980ce84f64,"Bitcoin Up or Down - February 13, 7:15PM-7:30PM ET",79,True,Up,240.3569
+0xc25ee227bc4c49a871b1e0a50f13bf10006a43506349e60e5cd4d4936c6f9f5c,"Bitcoin Up or Down - February 13, 9:00AM-9:15AM ET",79,True,Down,-53.1868
+0xf4ffdf364123fe0012e859336fd73ccdec4d744f83091c583b5f5a8e80274c38,"Bitcoin Up or Down - February 19, 2PM ET",79,True,Up,909.3973
+0x4ee7aaf150206048bdf796c716cc00d433401f30486e48067ff3f1fa3cc21e54,"Bitcoin Up or Down - February 24, 8:55PM-9:00PM ET",79,True,Up,135.1838
+0x09cbe3e796661a1d820580145488ad2ccb9ad1e720efcd64b448bb77b97007c1,"US strikes Iran by February 27, 2026?",79,True,No,1057.4564
+0xb99884b3f3cc333e3951aa35c4969cf5f5ac0a550a84bf07f6389d66010e30b2,Will Elon Musk post 380-399 tweets from February 17 to Febru,79,True,No,147.1318
+0x906a3a1e0a134fe527a746a705449a9dd420ce2991be1a37c83e5179f004605e,"Bitcoin Up or Down - February 12, 9:15AM-9:30AM ET",78,True,Down,290.3966
+0xd214cae0d20fd5618240533e0f0526132d83532931a5f03521420538f3aaaec0,"Bitcoin Up or Down - February 16, 3:45AM-4:00AM ET",78,True,Down,-100.0622
+0x0407a7a6197535fbca8b2572f7ede5f5ad5edb66ea22077d2d4db0916a1c0ec4,"Bitcoin Up or Down - February 16, 3:00PM-3:15PM ET",78,True,Up,-380.2444
+0xca6e49ac02d2024ea7e8a5c3f2d55110345a44c8b99e5726144e80a3aedf1d21,"Bitcoin Up or Down - February 23, 9:55AM-10:00AM ET",78,True,Down,194.6905
+0xe89cdfa298d0527375b9d286dadc3cee3fb562969987562dd43a65b05cfbc690,"Will the price of Bitcoin be above $68,000 on February 21?",78,True,Yes,671.8086
+0x87c696852b80f378ae877a928f2cc62c0ea1a68f0a398ca58d9cdfe853d2d521,Will the Los Angeles Lakers win the NBA Western Conference F,78,False,open,-5.7984
+0x1595b4818eeb1ea1e0bec5de6f057218e557feee9b405a0e930d290384fa1d16,Will Germany win the 2026 FIFA World Cup?,78,False,open,-7.3395
+0x8632d540d4a449021946f3ac7035326967afa9104c5df06479dc42517a76ddb5,"Bitcoin Up or Down - February 14, 1:30AM-1:45AM ET",78,True,Down,424.7657
+0xce98197d0fa3e25c276f2ccdb68d9f9caec8fb7bc66536b236913f9635c18fae,"Bitcoin Up or Down - February 13, 4:30AM-4:45AM ET",78,True,Up,-63.388
+0xfdac276de12b279fba0f606ed4b4ab7ed8cde5f1fc25a3e87f61654c87d17dc1,"Bitcoin Up or Down - February 13, 7:00PM-7:15PM ET",78,True,Up,-2.0056
+0xb755819bbc4452f0909477b9a171dd43cc192729621ec72f764c939728a9cbb8,"Bitcoin Up or Down - February 19, 5:15AM-5:30AM ET",77,True,Down,250.3873
+0xb249b81a8b30f53a382f4ef077cc55a42cabc46141b9056e4ce7308c4f5e5163,"Bitcoin Up or Down - February 16, 8:30AM-8:45AM ET",77,True,Down,-46.0436
+0x9495bc852b8487af0a237cb2ba16fe962c265ec987b47fbefb6eb3864e42c3dd,"Bitcoin Up or Down - February 17, 7:10PM-7:15PM ET",77,True,Up,-1070.9459
+0x5daa317e8a47a916a6ba0af5c58bc5730c1df22bfb5ef85d4160811cd7500163,"Bitcoin Up or Down - February 13, 11:15AM-11:30AM ET",77,True,Up,633.6086
+0x266185b5588096b9694a0be50d48fdba76b3d7d9544c4d275051458760b997fc,"Bitcoin Up or Down - February 12, 10AM ET",77,True,Down,180.3642
+0xb7af8d0aa0490f21322ada13925759a384b470edea2cb51f9c83cbfd8df5a1fe,"Bitcoin Up or Down - February 14, 2:15AM-2:30AM ET",77,True,Up,-81.6285
+0xea89863f9041b7bbf294b462ff2b267930af95dccce1d3f6d28afbf498ab93b2,"Bitcoin Up or Down - February 13, 2:45PM-3:00PM ET",77,True,Down,130.8864
+0xb7f8ec185b827ecd6413f729a7b510a00ad7c6e27c0f0527f5394c867a02b729,"Bitcoin Up or Down - February 13, 10:15AM-10:30AM ET",77,True,Up,182.1306
+0xf058d6fff314f4888506afbddd18728203a268e3359fcff416ae224223c2cc70,"Bitcoin Up or Down - February 15, 12:30AM-12:45AM ET",77,True,Up,-88.9232
+0x90fee6a186fc01928c13b1c98be08463ebb22af5589326287542dd3af4c19639,"Bitcoin Up or Down - February 13, 12:15AM-12:30AM ET",77,True,Up,222.3784
+0xa605a985c0bba2b41b3d1f72e20ef7da024060151662068c0541758c07ccd833,"Bitcoin Up or Down - February 15, 2:00AM-2:15AM ET",77,True,Up,-188.6693
+0xe97ecd5d14f1d667ba6c2bde851547198d39208d874ef2e5036180f33766bbd7,"Bitcoin Up or Down - February 18, 7:15AM-7:20AM ET",77,True,Down,-547.728
+0xb986c10bfb6a740fe35c36d5ef96fa6d7e46cc7a17b268a037dc86904f806f98,"Bitcoin Up or Down - February 14, 8:00AM-8:15AM ET",77,True,Up,206.3891
+0xf88a2140ac54353c2f51b2ee20de43c72b0d442ee42f0e5cec5900ad0797e7cd,Will Manchester City FC win on 2026-02-21?,76,True,Yes,6749.9481
+0x52dd8649984677da3aa0513dac444707043f1fa45cd2fb95cc16b445c19fc2cf,"Bitcoin Up or Down - February 12, 3:15PM-3:30PM ET",76,True,Down,227.5863
+0x82330af636641adb46cd7d79e1da5ce795aedbc4183d047a32e78bed43da2d89,"Bitcoin Up or Down - February 12, 7:45PM-8:00PM ET",76,True,Down,-216.953
+0xee4520e0dc6e83786f8ad5822656d6d44878ae4077548295f0009f871e784ce5,"Will the US next strike Iran on February 20, 2026 (ET)?",76,True,No,-53.7574
+0x9bf7b961691a074e9887886fad15acca0f783af1c0207671a5a5af014d2e3283,"Will the US not strike Iran by February 28, 2026?",76,True,No,4417.9491
+0x4e0b3b0569c4ed3445565bae4c6bcf9c8c5aa2d89295c2610081044a6baedb54,"Bitcoin Up or Down - February 17, 10:55PM-11:00PM ET",76,True,Down,-890.6715
+0x1c5dc849f176676eb4f916370fb4f369761c26c552d877505bf0c58590fbea17,"Bitcoin Up or Down - February 18, 9:25PM-9:30PM ET",76,True,Up,-114.7546
+0x9a3a8704592f5a368db1db7253f8ee92f2ce40f760b050e13a707832717683da,"Bitcoin Up or Down - February 17, 10:45PM-11:00PM ET",76,True,Down,82.3118
+0x77653ab16e38862f435ab163de50ec628a8f7fb5a2b9d60720ecc585756dd5db,Nuggets vs. Clippers,76,True,Clippers,8541.9889
+0x5723d09b71552cb00795b29193a64d0ea98818c5a69d22d481ee4cfe77b2068f,Cavaliers vs. Hornets,76,True,Cavaliers,7135.0352
+0xef2845c7d91bfcb0fde0750f4561f15a074bd4465ef443041628039eff1a0f04,"Will the price of Bitcoin be above $68,000 on February 17?",76,True,No,-2501.1748
+0x3ea9c1b854c73bb18841dd82a7dbb37b2c76ce7c68a63547823c9d308bba5233,"Bitcoin Up or Down - February 17, 9:10PM-9:15PM ET",76,True,Down,-89.459
+0xbfe3cbce151bc2998ab7fc5c571bee622da5bca634ea911882adfd545b189eb6,Will Elon Musk post 380-399 tweets from February 6 to Februa,76,True,No,-1228.9516
+0x1d2665543f860c00b2c0efc78d4e6f8c129bd7746971119816fc5b738b5be0d5,"Bitcoin Up or Down - February 21, 10:35AM-10:40AM ET",76,True,Down,-148.3866
+0xbb4d51e6364066d92eb6f9b8413dd7193de70966736044463b205834805a1f3b,Will the Iranian regime fall before 2027?,76,False,open,150.2322
+0xebcb3c633c2269a42cd6f56e699620ed52f4be00d55a11a171bc1ac023a8a641,"Bitcoin Up or Down - February 16, 11PM ET",76,True,Up,-602.5251
+0x4ae5a7e5e659c08c7aefc7cb42617ff4a06863e7a86f3ca4a87390123e6ecfdc,"Bitcoin Up or Down - February 13, 1:15PM-1:30PM ET",76,True,Up,-274.1986
+0x7fab3a28e4f4e37a9ca40e41d62af09a4be8579aaa6f326d05bbf98dd22fdf07,"Bitcoin Up or Down - February 12, 9:45AM-10:00AM ET",75,True,Down,-189.2483
+0xffa8038817de056f77c20c3a99db38af4a5433d047137c0866eb15216f2c2ca9,"Bitcoin Up or Down - February 22, 12:45AM-1:00AM ET",75,True,Up,408.8754
+0x83edd16697efe959b144bbacf2eeda5d72005e6a60375ef909062e3a58f1b611,"Bitcoin Up or Down - February 18, 11:00PM-11:15PM ET",75,True,Up,307.8817
+0xed1a959b21df4c3a479114f8381fb4c0acd1d32f806ba58766f430a26364da8d,"Bitcoin Up or Down - February 12, 4:15AM-4:30AM ET",75,True,Up,-140.5899
+0x81a537b379a35e4e17c286d3b37394e94bd74c1779bbe9a13670eb991b201a3a,Will Tarcisio de Freitas win the 2026 Brazilian presidential,75,False,open,1.7527
+0x15b52315fb1471b9c12222bac5eaee4908b0563b8dab83671f6a5e8679f58744,"Bitcoin Up or Down - February 26, 6:20AM-6:25AM ET",75,True,Down,188.3631
+0xb718285782b0ab596501eded291b87e3ce538463eab68159ace7b4660b413f14,LoL: T1 vs Dplus KIA (BO5) - LCK Cup Playoffs,75,True,Dplus KIA,-8200.4423
+0x8ef22e6eab62d972608696bf94798e0ce57bb1f453153c2fa7b1885880d44858,"Bitcoin Up or Down - February 16, 5:45PM-6:00PM ET",75,True,Down,-38.3481
+0x0ff7226a55200eaec9f667d80601bf509305581dfac8734b6ce82b81011fe8c7,"Bitcoin Up or Down - February 13, 3:00PM-3:15PM ET",75,True,Down,-19.4874
+0x6ae046ea496383f9bfe5b88a9d5bc215b9868c6fc260220278bf3335bd5733cc,"Bitcoin Up or Down - February 22, 5:35AM-5:40AM ET",75,True,Up,32.4712
+0x45692d624a9ea264847566ef9939a6a88eb368cc69d7428aa62e0955f0473a7a,"Bitcoin Up or Down - February 24, 5:25AM-5:30AM ET",75,True,Up,173.5824
+0x4489d71363e1894219fc1379130c93c763f4343e5851dfbee687e753ab823569,"Bitcoin Up or Down - February 13, 9:15AM-9:30AM ET",75,True,Up,-673.2775
+0xac2a2f6039ef189e2b9c34a431e64d78c459f8370c858c77f2aa628496cb3075,"Bitcoin Up or Down - February 12, 9:30AM-9:45AM ET",75,True,Down,548.5863
+0xc24a7efb9a05be7e3579112dcc54492dc3af966602088aa93c7f233a190f79d5,Will Cade Cunningham win the 2025–2026 NBA MVP?,75,False,open,-127.1979
+0x8d6074e6527ba2e386414fd2a53515f7863b634d87cc2ae70cb4266aecb71f80,LoL: Dplus KIA vs DRX (BO5) - LCK Cup Playoffs,75,True,Dplus KIA,-532.5969
+0x7176709da27572a3bdf6d9f8f9276fd7f3cde10d86be2ce289eef2820f08cfc5,"Bitcoin Up or Down - February 18, 2:00PM-2:15PM ET",75,True,Up,78.118
+0x598ec9f98def655a43fc5a62bf5edb4322cbe540cd8d2d1b0644f82ce669a944,Will FC Barcelona win on 2026-02-12?,75,True,No,-2894.7071
+0xf346d6f19657ab4a70fd10935b828782ccf56ed70c0d37fee1320fccaa4cca6e,"Bitcoin Up or Down - February 13, 4:15PM-4:30PM ET",75,True,Down,226.6667
+0x9def7909a8091d9dc19704169cae113d6f6d1cd30a0360a276cbd907cc0c0230,"Bitcoin Up or Down - February 13, 3:30PM-3:45PM ET",75,True,Up,-0.2664
+0x91c470f7f5c39cda1d05a87c34d9b65afc0f493793d8e918a9f912568aa4966f,"Bitcoin Up or Down - February 16, 6:15PM-6:30PM ET",75,True,Down,-27.7565
+0xa31ffd6fa3afcbfc0bfcd9ea3e74473ad713b0ffe5e013bc7bbb1e8b1aca31b0,"Bitcoin Up or Down - February 12, 7:30AM-7:45AM ET",75,True,Down,-207.0135
+0xfd614f89c078aea8fc70d3f00edadc419d76b79829c80cd36432f28bec1ec78d,"Bitcoin Up or Down - February 16, 5:40AM-5:45AM ET",75,True,Down,-72.119
+0x2cefe6009ea518f77b8a82714e54c0af1d0f25e99b37d4861f4a5d3ebbf142d3,Will Lewis Hamilton be the 2026 F1 Drivers' Champion?,74,False,open,5.0674
+0x89dd96b12bf1ff3370f46a9e0f74c532c518fecc8f6f374c4bbc16b98d5d139d,"Bitcoin Up or Down - February 13, 9:30AM-9:45AM ET",74,True,Up,1476.0212
+0x8f639076cb22209bf3641e88bc029013a0f93897b057507cbafdcf70acdd6667,"Bitcoin Up or Down - February 17, 5:00AM-5:15AM ET",74,True,Down,-198.4648
+0xf23a5dd4195664576da9963ef016ac43b3154da408f608379848c25b99c0828f,Will Elon Musk post 320-339 tweets from February 17 to Febru,74,True,No,-451.6283
+0xb65af06a46f96efeb6cfc43f24650414284e58132375c065b2828afee3967163,"Bitcoin Up or Down - February 20, 8:40PM-8:45PM ET",74,True,Down,-182.9722
+0xd65fc839a277410d5736fd8182872050fc997f0b5e089ba098a294a26617c34b,"Bitcoin Up or Down - February 19, 1:45PM-2:00PM ET",74,True,Up,-64.4114
+0xcb2601bc76be86410970bbf4641b6f21851fcf9a5d7af771118034954fc2a5f4,"Bitcoin Up or Down - February 17, 10:10PM-10:15PM ET",74,True,Up,-31.8304
+0x8be01e848ecd72409dbde75477122b1db8ca04e5dac4d15f038b6e9cd4f09fdd,"Bitcoin Up or Down - February 13, 11:15PM-11:30PM ET",74,True,Up,-160.6145
+0x0f49db97f71c68b1e42a6d16e3de93d85dbf7d4148e3f018eb79e88554be9f75,Will Gavin Newsom win the 2028 Democratic presidential nomin,74,False,open,27.8846
+0x28e7c57a5d983d62a9e8dcb775e1cb122320bba383b588757054a6d855a6ca9c,Cavaliers vs. Bucks,74,True,Bucks,4203.6386
+0xd3f93eb562ba2741f3cf68bf3126b60bd6b02509be9278cd47a499006e2625f4,"Bitcoin Up or Down - February 16, 2:40AM-2:45AM ET",74,True,Up,89.8692
+0x2e56abf38080f33fb82ce3676c03989b7f93fddd6b3deea492e5a523609297a8,Will Elon Musk post 360-379 tweets from February 6 to Februa,74,True,Yes,-1.2654
+0x26c056d63c09fe955a30cb6af6044be1d1a603b9fd0f309a45a1238882307caa,"Bitcoin Up or Down - February 14, 9:00AM-9:15AM ET",74,True,Up,166.1164
+0x9e145f0a878acb2151c3f95769a75a7a640fa4faa4dcf1a2763f3cf6a7820c02,Timberwolves vs. Trail Blazers,74,True,Timberwolves,117.2321
+0xc72c64dc2fd24cf326a59cca9da4bf440594329a3ac51ef14ad3f206aeb50917,"Bitcoin Up or Down - February 14, 2:45PM-3:00PM ET",74,True,Up,-244.8625
+0xa4d14c625def1036bfb3cf6d75df0d06a267740b1c463806a59207d08288db13,"Bitcoin Up or Down - February 18, 6:30AM-6:35AM ET",74,True,Up,-154.6203
+0x514a1e0b775883875ef3a8bbb9b4b4d0b9cfc034cdeb39a736dac57373f78ff7,"Bitcoin Up or Down - February 12, 2:45PM-3:00PM ET",74,True,Down,782.2222
+0x25870b54d0819f18cc5a1b24b28242576cc30ba7b55aa1b6fbe85fd6bcc42d0c,Will Elon Musk post 360-379 tweets from February 20 to Febru,73,True,No,85.5482
+0x02330ccbfc1a90b7330ed35f27fadb01b64f5e523bfaaa5329ff0da249f836c1,"Will the price of Bitcoin be above $68,000 on February 13?",73,True,Yes,-356.8648
+0xe4c65268d62785ca4d4d76da6f17a1386e228eb8997de3a69471258a5457da13,Will Elon Musk post 300-319 tweets from February 20 to Febru,73,True,Yes,4128.8545
+0x90999658fff72e6cfd0b51e6f561578d99ad9d24184bdd6ed5d2f8a861d50dfa,"Will the price of Bitcoin be above $66,000 on February 23?",73,True,No,458.2459
+0x86a717b150e82e1c374fc05c1451bb31259ca0dbd3510221ab197639b44fa26b,"Bitcoin Up or Down - February 15, 11:10PM-11:15PM ET",73,True,Up,35.2542
+0xe339342ea6895f2c3fb1be9576c723bf09d4004e28376a69a268020289f42d0d,"Bitcoin Up or Down - February 13, 6:15PM-6:30PM ET",73,True,Down,-103.2621
+0x20ca1eb92ac9c2026d7a6a76e7150390eb0637f80f09c883273484a89587a9f7,"Bitcoin Up or Down - February 17, 12:00PM-12:05PM ET",73,True,Up,94.1149
+0x452d39b83868c4f61ccd661e055e2a7325062449233a8cce9add86a597d4ea3d,"Bitcoin Up or Down - February 21, 2:30AM-2:45AM ET",73,True,Down,-395.3845
+0x73f7620da1d4a2ec2283ad55d72f5ff4666e8732ec04458f88dff6773d6be2c6,Will Victor Wembanyama win the 2025–2026 NBA MVP?,73,False,open,-8.7404
+0x0dee6301b33568d9f27a003f172bc946ab6bf96157642f97474ecf402f3a8ba6,"Bitcoin Up or Down - February 16, 11:40PM-11:45PM ET",73,True,Up,-205.277
+0x59f9a885a22e30da427ffc288e7fed0d33fd254cefa9f437e20a91900b5ab224,"Will the US next strike Iran on February 26, 2026 (ET)?",73,False,open,29.7844
+0xebdd1dd8d4c0e282a04b19b81ff093f3119437b5e8d36614b0e78890fe1d3b8a,"Bitcoin Up or Down - February 15, 11:25PM-11:30PM ET",73,True,Up,92.0534
+0x38bb9355fd91f6d7053465caefbbf691bd4a81ec1b08edcca656fc9dde259b14,Will Fernando Alonso be the 2026 F1 Drivers' Champion?,73,False,open,25.6053
+0xe335fd187815e87f254f70937dcf905587486f8b50497366f0d645a12d17403e,"Bitcoin Up or Down - February 12, 3:00PM-3:15PM ET",73,True,Down,444.7252
+0xdcc87b9ca36015e396bd0eebca29e854a136ed2b0b701049d1ee9da6bee3eb35,Will Trump nominate Kevin Hassett as the next Fed chair?,73,False,open,-4.9917
+0x9a97ffa1f9d959ae9c92a96a5733636a7ae7986a3a1b59cc38fc7cb5db25f69c,"Bitcoin Up or Down - February 24, 2:25AM-2:30AM ET",73,True,Up,-241.7022
+0x915c1b0284396c290d9646b00445c06b4a4ecab2f6fc4af4e32ecb747aedaa14,"Bitcoin Up or Down - February 23, 10:30AM-10:45AM ET",73,True,Down,217.9074
+0xfaa9cc72c7f1d46c95b432d23a32ecfa6846b7361187a11291aa0fd57f10ccb1,"Bitcoin Up or Down - February 12, 10:15AM-10:30AM ET",73,True,Up,-204.2562
+0x13e1cc703a120883a709d3bb29707097952845d61ca6793ea2b4328bae2a7451,Will the Boston Celtics win the 2026 NBA Finals?,73,False,open,-10.3363
+0x485980d95e33f61f6552465333cbefc3ced5c94704d7d0ecbff9add6a6741b1f,"Bitcoin Up or Down - February 24, 1:40AM-1:45AM ET",73,True,Up,-142.7897
+0xead450bb8efa60d7abb6fffc81d61c46686fc5e6572c3202b5c64afb55791cbb,"Bitcoin Up or Down - February 23, 4:00PM-4:15PM ET",73,True,Up,370.3231
+0x736f45ea9179f71d0d6577747145d62e32d634b015d5d8ba3bfdd8a592f15c8a,"Bitcoin Up or Down - February 13, 10:30AM-10:45AM ET",73,True,Down,949.2382
+0x7d83aedfb7ee237eb30779498c46fd6ffc58541200badaa6c8f6cbf41bd0cadb,Will XRP reach $1.70 February 9-15?,73,True,No,18.7666
+0xdc241f6701032024d4c8b24b33df78ed88adaf49fb2c38c3daa6bc8bdec8f8a2,"Bitcoin Up or Down - February 19, 6:30PM-6:35PM ET",73,True,Down,17.1444
+0x8df958b0a33e927f7fe9f97d5c8e3dd80b2d1836e0867fa49e5329024112986b,"Bitcoin Up or Down - February 13, 4:45AM-5:00AM ET",73,True,Up,88.1169
+0x0ac23db1e56971022bc7e822b907a2466c618b34104ea72bc9fa95e41c86a9c6,Will Ted Cruz win the 2028 Republican presidential nominatio,72,False,open,10.1456
+0x1a94df20a03d555a390dd3fec53cc31b6ec05a845884d2df2529eeecb4978cfe,"Bitcoin Up or Down - February 16, 4:45AM-5:00AM ET",72,True,Down,70.7587
+0x6d4a005606a1a72f1b411ab02b292d668784e37ecf16ca709415d535f984322a,"Bitcoin Up or Down - February 19, 6:45AM-6:50AM ET",72,True,Up,466.1676
+0x5e1bd55e16408fc62950f04825f501845e4f493d56dc58074482d9c587615867,"Bitcoin Up or Down - February 13, 12:45AM-1:00AM ET",72,True,Down,-110.4472
+0x15975602ca0e28f5ca97c4655dc8060c1e65e415cb140b0e355e83a1434b4b31,"Bitcoin Up or Down - February 22, 5:30PM-5:35PM ET",72,True,Up,668.2465
+0xce1a5492a4f15dcb49788de75c9ee1d4c7b8c134239d9aad1e8534b4acca4e65,"Bitcoin Up or Down - February 16, 5:30AM-5:45AM ET",72,True,Down,219.4219
+0x7ba1c6c57e3afb93ff4ddb90000fc976377d4e13785a077f968f4ac41971df3a,"Bitcoin Up or Down - February 12, 7:00PM-7:15PM ET",72,True,Up,213.6699
+0xfd0b5cb945f325053a965c0dd23cfec8f4cad84bc9cb8b824e4a4c7ab6367930,"Bitcoin Up or Down - February 15, 8:15PM-8:30PM ET",72,True,Down,114.9396
+0xf41aa11b28905d96cae731de5e1119e53a51e96c470a6f2042f73128fa6ebf20,Celtics vs. Warriors,72,True,Celtics,6768.8352
+0x594ae8e9da987536548fefe88dc338aeec1c2d129778c72bad069305849ab397,"Will the price of Bitcoin be above $68,000 on February 22?",72,True,No,-4469.1168
+0xcd83ba1774ba0f1c88f70465fa04edd11260fe9f0c4a81b33524f098f15b6e06,"Bitcoin Up or Down - February 25, 9:15AM-9:20AM ET",72,True,Up,379.7695
+0xdeab1cc413ad6a54878e233ea5ec1e5fc920c5adbfce7b5397f2296e5fe52251,"Bitcoin Up or Down - February 12, 6:45PM-7:00PM ET",72,True,Up,-27.6925
+0xdbdfa2605d2b649f15137cec7223fa309b619b495a97cbcaaf2d289791e406ee,"Bitcoin Up or Down - February 14, 11:45PM-12:00AM ET",72,True,Down,486.6996
+0x3beee638d2c0571c8e14f749fb7307b6675f50208c8edecd0168b11a7de5a5a4,"Bitcoin Up or Down - February 13, 2:45AM-3:00AM ET",72,True,Up,0.8418
+0x0ccd7602faf6ff9332521889737a2fbfe453988c9402b2d2dced7e1488840ba0,"Bitcoin Up or Down - February 12, 9AM ET",72,True,Down,-131.7786
+0xbf4af695d94f222517f5fb9a6bded3175e56af269906bdded1f90b220a34eceb,76ers vs. Pacers,72,True,76ers,-4701.7031
+0xaed4c50ed98c6d18b741916b4576035156b948b87b168dba9cba24168053979c,"Bitcoin Up or Down - February 13, 3:30AM-3:45AM ET",72,True,Up,-851.5366
+0xbcc0061cc099294aacc0274c40547e52110232594a8f2ba6b066e7a0af8bf5af,"Bitcoin Up or Down - February 16, 10:30PM-10:45PM ET",72,True,Down,-75.2911
+0x2896800884234b1eec606851596f6c251a1fc7935b784395267324b99ad469f2,"Bitcoin Up or Down - February 18, 12:45AM-1:00AM ET",72,True,Up,126.0973
+0x1951edefa8e89692d969a73229a730fae813eaf385b2b7d0775237d320f54fda,"Bitcoin Up or Down - February 13, 2:30PM-2:45PM ET",72,True,Down,308.0005
+0xbbb0eea4d7a29479691677b3fb2c6b75cb4cc36723c2e77ce8e710512d6406b3,"Bitcoin Up or Down - February 14, 12:30PM-12:45PM ET",71,True,Down,-89.58
+0xe883f2fda25a605a184bb5fe583afce6cc21ea0b348b6a3728ec3067553c548d,Will J.B. Pritzker win the 2028 Democratic presidential nomi,71,False,open,-2.1132
+0x962247a71967143cad90922a761a8d0ba90cc2870e318d7fe86949a79ef81da4,"Bitcoin Up or Down - February 17, 5:30AM-5:35AM ET",71,True,Down,195.6071
+0x05ecb044518b08a7423aa61cc76597029963e7d8e98d3f5b52b731d379951376,"Will the US next strike Iran on February 22, 2026 (ET)?",71,True,No,-91.9528
+0x83c1613079142473a40b0ea739d77629cf7d25b2946b60e394c98c527a607aa3,"Bitcoin Up or Down - February 25, 11:35PM-11:40PM ET",71,True,Down,172.1636
+0x627432726041308b873adac030c674542d1ce920bab336eb3ce83334c8324b4d,"Will the US next strike Iran on February 27, 2026 (ET)?",71,False,open,-10.3332
+0xbfccf9f1597b7c4a06d72f39ddb81f0347c4555b98e578f546bdfb2d5af6b18e,"Will Bitcoin reach $80,000 in February?",71,True,No,-697.0634
+0x18e5913e1065e0dcd6025d659b81a1d095061d6b8e76be3d2504cad23d5d8c68,"Bitcoin Up or Down - February 24, 5:05PM-5:10PM ET",71,True,Down,-49.4165
+0xf5e4978dd1d0fe04a09bd9f109c799841c92e783fa7b8c7b61726e3d3b367e35,"Bitcoin Up or Down - February 22, 2:50AM-2:55AM ET",71,True,Down,124.1024
+0xf1b8d60c2a5045cc0d043bd8c1b54348ba71883704fefcde160ba4c23eba0e9f,"Bitcoin Up or Down - February 12, 8:15PM-8:30PM ET",71,True,Down,-33.7004
+0x8cc1b85fd21b755e479883e2f1e91b4639ab9a08cfd35963de52e3ab10b0de54,"Bitcoin Up or Down - February 14, 4:00AM-4:15AM ET",71,True,Down,1235.2904
+0xe3c873d0b894f1adbdc88a0e2566b9384f497cbda743cfb7635cb53653d67cf7,"Bitcoin Up or Down - February 13, 10:15PM-10:30PM ET",71,True,Up,-570.7294
+0x42ac9b14cb71684f2c72a01bfc2f5dbb86b51fc406a50bbf3c8df0787d7390f8,"Bitcoin Up or Down - February 25, 12:45PM-1:00PM ET",71,True,Down,119.3865
+0x1ce8699ee35fdc0ca0b9a1452543ae63fd8d7964a7a47af36c4517410777ca19,"Bitcoin Up or Down - February 16, 3:30AM-3:45AM ET",71,True,Up,-373.4238
+0x6b44bd667fad6cb5b3b68d8bd1055a038c77d9176dbd51f123879797cc3368a7,Will the Cleveland Cavaliers win the 2026 NBA Finals?,71,False,open,12.0032
+0x4fbc040f0235292ea7029718bb9fa2fe4693d710dc719117745b83789055167f,"Bitcoin Up or Down - February 13, 8:45PM-9:00PM ET",71,True,Down,289.4935
+0xdbbfbc58b768340848cf963e554a91a686265b39aa49d5e68cb310f6566a8ac3,"Bitcoin Up or Down - February 12, 8:00AM-8:15AM ET",71,True,Down,-266.4767
+0x08c3b8bc3c66f7e447dcce28731936704a52e3e9562fb6a3d4c6ca30a50b4503,Will Pump.fun be accused of insider trading?,71,True,No,271.1503
+0x9c8b6186c7360a80d07439328edce639457417ab11bf488840373ceadaab34fa,Will Binance be accused of insider trading?,70,True,No,-339.3849
+0x7790a65c30b96ab082fdfba3d941b11392ea13ab1ef3b5c0c1628c6dc6cdd1ff,"Will the price of Bitcoin be above $68,000 on February 16?",70,True,No,358.716
+0x8a24195ba658489919afbb28baef0894a0ee35d8e87ca369d65ff224da9714d2,"Bitcoin Up or Down - February 14, 1:45PM-2:00PM ET",70,True,Up,134.1084
+0x6e43919bc57cd9c8e6afebbab9f9a812e818b16cc75fba2d3084a1cb8ddbdc8f,"Bitcoin Up or Down - February 16, 10:45PM-11:00PM ET",70,True,Down,24.2993
+0x9b56568af78dd036b03c641e0673729d72cd7d63578eb0119cd23eb1f94f1b56,Will the Houston Rockets win the 2026 NBA Finals?,70,False,open,-4.4243
+0xf0c0a2137d572d66fe19963b1bdbb0808c254c8092d8aa7a41fe8cc58afb9216,"Bitcoin Up or Down - February 14, 6:15AM-6:30AM ET",70,True,Up,-92.0642
+0x21eec08c40d2d4eab95fc63dcd3dd93eeb531f40310854bf2d4b74a58071a188,"Bitcoin Up or Down - February 13, 5:45AM-6:00AM ET",70,True,Down,-43.1142
+0xa8b2524f43f6c699fbcc856aa5e14ab00588394b2fd7d7cd00eb73f4ef6e1caa,"Bitcoin Up or Down - February 14, 3:30AM-3:45AM ET",70,True,Up,130.7309
+0xdf5adfb9a5eb70bdabbf96e2e5775a7727e0c664072c0fc9d789c58111c452de,"Bitcoin Up or Down - February 24, 10:30AM-10:35AM ET",70,True,Down,-138.0364
+0x078b9b6050dd4d9bfe645af925994218175b586da3b3e2a2e5caf2a3180c883d,"Bitcoin Up or Down - February 17, 6:00AM-6:15AM ET",70,True,Up,261.7391
+0xf972542880343e9bb9fc75aec332b34d1becf0e0b8a7aee37b3c6f43f694ce7a,"Will the price of Bitcoin be above $66,000 on February 19?",70,True,Yes,-2519.6457
+0x1f25449e1d10ac6139f395358479939300f7d355b15d4ec1e26ea5005b175bb3,Will Elon Musk post 400-419 tweets from February 6 to Februa,70,True,No,-263.5688
+0x1f4cc3d922d0ca1db47ba064aa7fe9f6aed8ac6862da228eeb2989c16d10a008,"Bitcoin Up or Down - February 18, 4:15AM-4:30AM ET",70,True,Down,331.2543
+0xd05ea2206e08b0687ae5f1590ffe0194bda2db67d26abeed79fb51f6fd2fb5cc,Pistons vs. Knicks,70,True,Pistons,165.2895
+0x137a7d98ef9b69c9bc9d435e0703e354a983ad03a9be29f5ba78caaacabd925b,"Bitcoin Up or Down - February 20, 2:15PM-2:20PM ET",70,True,Up,117.899
+0xe4f25e05d842810ff5944ba1e2953c6ced1e869cac3b44d15b32fd404ddb4bf4,Will Inter win the 2025–26 Champions League?,70,True,No,-665.4756
+0x44720b03ca9ee02f871168cf230856835003e254a936e37aec3cc3ed5e8b0b16,"Bitcoin Up or Down - February 14, 3:45PM-4:00PM ET",70,True,Up,94.4504
+0xb25fd7fae48f2d0083f4c40e59499d8ef993955078cd4b1036d73210743c92bf,"Bitcoin Up or Down - February 13, 9:00PM-9:15PM ET",70,True,Up,298.1031
+0xf28959758de216604021138f8d40096d6089bf00375f6812b62f2c737c3999de,Celtics vs. Suns,69,True,Celtics,-14.7287
+0xf01fed5e2aea775176ef8dbb697ab6b370a568686d8990489dff545bda37ffdf,Will Real Madrid CF win on 2026-02-21?,69,True,No,-2220.7291
+0x19b70c59fed8f61107376590a28a49b070500d3fe977e76e32975662e08bdc5d,"Bitcoin Up or Down - February 14, 8:45AM-9:00AM ET",69,True,Up,-93.9281
+0xe3baf33e24abb22a05cf03098ce4dac4134dfe9026d6298d9f3c6f5b336e0ab2,"Bitcoin Up or Down - February 18, 11:30PM-11:45PM ET",69,True,Down,375.7694
+0x52f0c0cc47243b15cf69c0e1e4ca5e5f18bba4f8a2515db76dd55f394e1d11bf,"Bitcoin Up or Down - February 24, 2:15PM-2:30PM ET",69,True,Down,5.3683
+0xe86a38453af7d41d2786fa8c58d8e1a506be23b1017b5cc0dc4645d1b9cd938f,"Bitcoin Up or Down - February 20, 6:15PM-6:30PM ET",69,True,Down,241.5812
+0xf5e7d15eb4d7593a2a5d10f5425f7e4e343b7e3c37e80cc20500e358aced1093,"Bitcoin Up or Down - February 12, 11:00PM-11:15PM ET",69,True,Down,-124.8985
+0xdf758777a665aaea53eb70e3602d230ab2d6e079cf589d9727026821bf8c0e63,"Bitcoin Up or Down - February 17, 4:15AM-4:30AM ET",69,True,Down,-4.4588
+0xcc7191d618ab96b21b8ae7aeec1a5f7f6c40f4b2fde26ac34580f9187b90b0d2,Will Apple be the largest company in the world by market cap,69,True,No,33.6125
+0x291f0f6023efa933d36cc80fd55f9d176309a92b61b9567fd4f044a8b21873fb,"Israel strikes Iran by February 28, 2026?",69,True,Yes,2486.1649
+0xe130a6e30c3b83ba7ab173e37cd9d7046686b0479e74999cb3c60c5b5a9e850d,"Bitcoin Up or Down - February 23, 6:50PM-6:55PM ET",69,True,Down,184.5664
+0xfa578147b6a24b96feb8db78b112bce2428792341ea69d3b2f772d8ed767a9e8,"Bitcoin Up or Down - February 17, 12:55AM-1:00AM ET",69,True,Up,40.1684
+0x2a55f576b406ce4e06175156a41d078ebd78b7afc9285df5658f6de253a7b4bc,LoL: JD Gaming vs Top Esports (BO5) - LPL Playoffs,69,True,JD Gaming,4616.1896
+0x93fd6fb57420026a6bc10ecded3d686eca019bf7965cbef6dab0d3869775f362,"Will the price of Bitcoin be above $68,000 on February 26?",69,True,No,-141.128
+0x61ce3773237a948584e422de72265f937034af418a8b703e3a860ea62e59ff36,Will the Iranian regime fall by March 31?,69,False,open,-6247.8284
+0xbb51145bd932d84181d4b545d8e3e965bbe696fb86ba2310c8541c3c8fb66445,"Bitcoin Up or Down - February 17, 2:35PM-2:40PM ET",69,True,Up,-264.3389
+0x3c0add6d06af6d16c6027cf14f35329230e5f774a1a56d5cfc1a1ccc4fc7e685,"Bitcoin Up or Down - February 18, 9:00PM-9:15PM ET",69,True,Down,-147.0236
+0xf98706ba6ea545176d4d826296120fd8a0ab3656062565ff353b7544f680b88d,Will Elon Musk post 300-319 tweets from February 10 to Febru,68,True,No,60.839
+0x154fedd7aed2aaf0a566ed83b8e8850940c17685182dd46ca2426964c0f3c71f,"Bitcoin Up or Down - February 17, 1:30AM-1:45AM ET",68,True,Up,436.5359
+0x384a3e22204e8e1a950c76ae3b87b2d0c7f77dbbfd70a6db2093593f82e51158,"Bitcoin Up or Down - February 16, 11:45AM-12:00PM ET",68,True,Up,544.8522
+0xb7f5aa62b95c1115c39c71f45921f790a4319d93df6e9ff4a2eb5615f6ae7d37,"Bitcoin Up or Down - February 19, 6:20AM-6:25AM ET",68,True,Up,475.6123
+0xbdce170a2fd0a925fc774850e4b8e8dddd3d8da5f609fba66e3d3b67793afd47,"Bitcoin Up or Down - February 24, 6:30PM-6:45PM ET",68,True,Down,2.5628
+0x32b09f6390252b37d674501527e709016d55581b2c1e544bd4b8167f5f732f4c,Will Jesus Christ return before GTA VI?,68,False,open,-37.5451
+0xb441106ff79204e1c17342b9c187e6f9a8143a1db9a5e406602237dbe0141d4a,"Bitcoin Up or Down - February 22, 5:05AM-5:10AM ET",68,True,Up,-22.8634
+0x7356e116ff27a85378e8a305fe41467ddb0f6d744fd82eba47cfe34b3e13ee30,"Bitcoin Up or Down - February 12, 5:15PM-5:30PM ET",68,True,Up,23.8767
+0xac82cd4d20f72dd0a43f2ef44173ebc2119fbb44ea501b3c8b1a43ba40efa383,"Bitcoin Up or Down - February 17, 3:30PM-3:45PM ET",68,True,Up,2.6694
+0x85ef9df00eaa47fc4a54fbe877398e9853a2c845ffa885980e741eb6be428d80,"Bitcoin Up or Down - February 18, 6:45AM-6:50AM ET",68,True,Down,-7.2236
+0x65ec2361e5dcd25c350d315518830b2315e2229e1bef9992013a9b98931f328d,Will the Los Angeles Clippers win the NBA Western Conference,68,False,open,-2.3591
+0xc9a466ff5dcda816673a399a9022dfb23d5c3d8b64952bb4c83f1ff89c0a14f9,"Bitcoin Up or Down - February 12, 5:30AM-5:45AM ET",68,True,Up,426.8541
+0x11e7b1cf3a0ce13506832af5099b267677d01fcd8a88ee21277205226a451535,"Bitcoin Up or Down - February 13, 5:45PM-6:00PM ET",68,True,Up,126.8332
+0x977955f43846ba5b5509843410bfa4fa95edf3d9e92bf883565983df0855abb4,"Bitcoin Up or Down - February 12, 5:45AM-6:00AM ET",68,True,Up,-14.9891
+0x431d1a562418f4cd14d524712c7de3bd17ba474c72dd0ee815f05d601d9e6479,"Bitcoin Up or Down - February 14, 10:00AM-10:15AM ET",68,True,Down,-192.0721
+0xac5a968ce63080fd83fcb9a8eb73512f0ad4f0c689a86740b37969f5fb62bb78,Will France win Eurovision 2026?,68,False,open,-9.026
+0x6073d4de1dfa838a2c86d233d659a29fd11752d108bc8c88e6e90407f3badbae,"Bitcoin Up or Down - February 14, 7:00AM-7:15AM ET",68,True,Down,-66.5906
+0x1ce20bfed5c9768ea0f59841cd43b891d75c513348baa64f1f2f81dd53bee6c3,"Bitcoin Up or Down - February 22, 7:00PM-7:15PM ET",68,True,Down,55.8764
+0xcf1f64cf0fba35d073ed072c65baff33d8f5319d116c7b9cf598c00eacc8aaa2,"Bitcoin Up or Down - February 18, 10:30PM-10:45PM ET",68,True,Down,132.3574
+0x2594ef3f99fa98a63fb1a57516fcfc7ae79ad85fddb739376378946e85acec16,"Bitcoin Up or Down - February 18, 12:05AM-12:10AM ET",68,True,Down,-986.4783
+0x34247317c3000cff2a5e41cf1c181fde33784fbc7791bf908703b4086f13b454,"Bitcoin Up or Down - February 18, 11:30AM-11:45AM ET",68,True,Down,50.9671
+0x299796cfe91efec4644652203a118e33faaf37b5a7b2dd1e824afe250a292202,"Bitcoin Up or Down - February 22, 9:45PM-10:00PM ET",68,True,Down,172.5087
+0xe5734d988f2e429c8bf13f02434f23ab8c95a865b6e1e81a2e43c6317d68749c,Will Elon Musk post <40 tweets from February 12 to February ,68,True,No,260.8687
+0x24b9b84db87b1c75f637e4099a1191fdb2c616f1d45754ee4b7ef11e664fda52,"Bitcoin Up or Down - February 23, 8:30PM-8:45PM ET",67,True,Down,109.9624
+0xf012e0a884af19cdf0d86d92a54f8e148886162d339d9437c60f26dfe9f52b4b,"Bitcoin Up or Down - February 16, 7:15PM-7:30PM ET",67,True,Down,-57.6686
+0x922aa713b7b3ed7fb7b94407f4fa50a963802193567ade30864947e293a45ff7,"Bitcoin Up or Down - February 24, 7:20PM-7:25PM ET",67,True,Down,-26.1614
+0xb3e2add8d7f1db8bee2387000335d48eef970d9e0a187fb304d8c5a99d5f2693,"Bitcoin Up or Down - February 25, 7:00AM-7:05AM ET",67,True,Down,42.9353
+0x34a979f8afee836f3e59e9ddac593eee47566436b64f9720388705f4ef60fe6c,"Bitcoin Up or Down - February 17, 3:45AM-4:00AM ET",67,True,Down,-214.8733
+0xa5333a3791f57d98d987eda4e602910ad43401078c84ef2ff43e8aed90f3072a,"Bitcoin Up or Down - February 24, 6:15AM-6:30AM ET",67,True,Down,-231.1666
+0xa850a7e4892fe623c725010071d942c6112d0c761d5dbf260d7d692e651ee058,"Bitcoin Up or Down - February 12, 10:45PM-11:00PM ET",67,True,Down,-103.1383
+0xb734b84d58179b9d838ca972238d689fe921282b77acca0fde2604b0a63951e7,"Bitcoin Up or Down - February 16, 9:00AM-9:15AM ET",67,True,Up,-1193.1032
+0xd52e6e5ea31432bc211df980912b2a5360f0b526e0f195efd6caded0ad5891fb,"Bitcoin Up or Down - February 25, 8:30AM-8:35AM ET",67,True,Up,-123.5475
+0x71330d02e6c247347d09a0591bbb9e84ffb4baebc64b61d7490dcd058b410eeb,"Bitcoin Up or Down - February 24, 9:30AM-9:45AM ET",67,True,Up,-31.5287
+0xacfc7ff73aa93b2abff9ac9562311fde55c4436294d925f67cfddf8a56ab4e4b,"Bitcoin Up or Down - February 21, 11:05AM-11:10AM ET",67,True,Up,543.8019
+0xa60964fd8b2922ffd46631a7deeaa176ac7a039ab6bdff2b08875927d7b0e480,"Bitcoin Up or Down - February 13, 5:30PM-5:45PM ET",67,True,Up,23.9878
+0xe210052575420133d6b2fd2a160803e58fbf0b861bd7a22d0951ef25d0c2eac4,Will the 2026 Bad Bunny Super Bowl halftime show video get b,67,True,Yes,1843.5239
+0x4550ed3d7a957942c30d9a3803ddd0d9b02b0252a6d8383e18a6fc8d1f270cc4,"Bitcoin Up or Down - February 18, 12:15AM-12:30AM ET",67,True,Down,-158.3278
+0x789dea99a1235c84e6a8689e303658806662235c3c017b099c5fe5ae72952639,"Bitcoin Up or Down - February 23, 10:40AM-10:45AM ET",67,True,Down,-10.946
+0x8f48b7a8bca71c288587bc51c7ee67479422e90bdcbe868790215cec7887c468,"Will the US next strike Iran on February 28, 2026 (ET)?",67,False,open,59.1313
+0xa21ac8bf68b2b72ef5bcd3ce00f7b335013e9b03373e101e828548a394e02481,Rockets vs. Knicks,67,True,Knicks,-1367.0113
+0x20dd2e2ca787826f7260ead19275fc44e2062a099fbbbd2a975a365c6879c6df,"Will the price of Bitcoin be above $70,000 on February 14?",67,True,No,194.4506
+0xe301648f272edaebb5e984c77b304a388be35071f637b86a56c2c7a681c7fc0c,"Bitcoin Up or Down - February 12, 5:00PM-5:15PM ET",66,True,Down,-205.795
+0x14c9f9fb5b347076de8c9c6c6630789e0cace76178ab1b0bddd47e11d2159efa,"Bitcoin Up or Down - February 20, 8:45AM-9:00AM ET",66,True,Up,46.7138
+0xff5fcc7aa449f88a8f76d8053f9405a3305029a13548f21b62d7d064254c393d,"Bitcoin Up or Down - February 13, 5:00AM-5:15AM ET",66,True,Down,162.4634
+0x00e7e6982cac4b5526c1828189934200407ca1883d2a30732d76eeb527461aaa,"Bitcoin Up or Down - February 15, 12:15PM-12:20PM ET",66,True,Down,-119.785
+0x249aca483c74b421ad135083b29337a34688e977815b5cac9582a568533ff4df,"Bitcoin Up or Down - February 20, 10:10PM-10:15PM ET",66,True,Up,64.9109
+0xe1212bd3e9e8fc9d02f74fc89eea4149e1d1adad31012804f33f60ff7875a03b,"Bitcoin Up or Down - February 25, 1:10AM-1:15AM ET",66,True,Down,15.9648
+0xf95dfcdf72d98c59381df5b2d015e67aa7b7caf59258881c549d79400490a579,Will the 2026 Bad Bunny Super Bowl halftime show video get b,66,True,No,-8.3132
+0xdb2a98c139279addd9052e7258d6882d0df60ee3efc0fc96eeefb0ca760e4764,"Bitcoin Up or Down - February 18, 12:15PM-12:30PM ET",66,True,Up,46.4152
+0x71c60b9508d7711339efd14abd07fe7e90e07ade61622dba629f9f2fe07cd00a,"Bitcoin Up or Down - February 17, 12PM ET",66,True,Down,72.4918
+0x996c711ecb92ae7e5bb979bf39074b13b2902ad094d557127ec9c2a0cf18c5fe,"Bitcoin Up or Down - February 18, 9:10PM-9:15PM ET",66,True,Down,-279.5599
+0x3665b772dd8584986e4d5dc5c576497a067f11d851c93916b78f2f6adcef1269,Will Elon Musk post 280-299 tweets from February 20 to Febru,66,True,No,399.4622
+0xd24058e90e6387d7721ecf21faec2f72db0dc133cb2ac3967a615451f0825a53,"Bitcoin Up or Down - February 13, 3:15PM-3:30PM ET",66,True,Up,1062.713
+0x0a36a9f60253f1989c1154fdf962c1b2d933966af3405418ff1cfd106ff292b2,"Bitcoin Up or Down - February 20, 9:15AM-9:20AM ET",66,True,Down,-1067.482
+0xc04039ee270b4e2662b8f4d5e0c151d7036272dc8e167dce3d2cc90aaac88198,"Bitcoin Up or Down - February 23, 1:15AM-1:20AM ET",66,True,Down,184.8827
+0x649ad05a2868343271fe82ea692031d567ca1af652e3529788933157e94aa088,Will the Minnesota Timberwolves win the 2026 NBA Finals?,65,False,open,-2.0122
+0x7915686d541c75ab7ca38fb3a254417a2074d8201f953967e8ecab58d637de54,"Bitcoin Up or Down - February 15, 11:35PM-11:40PM ET",65,True,Up,-112.2047
+0xd78f32912f436a16d33ab02059faada4bba3bd4d9714fc9b4d5e4888c1021a47,"Bitcoin Up or Down - February 16, 8:15PM-8:30PM ET",65,True,Down,-397.8377
+0x4efe335cb0292a7e5c17973e9b7fe4d4570fc845668b6b8f7cd16532075115cc,"Bitcoin Up or Down - February 20, 9:15AM-9:30AM ET",65,True,Up,-119.0929
+0xa99e4c333a3894d037b443d2795b80ecbfa2e391993c4653d35461fa25c427b1,"Bitcoin Up or Down - February 19, 4:35PM-4:40PM ET",65,True,Down,50.8842
+0xf4065026f8e98b4ce998dc308ba5926a8fc27494655d937b70321df1b40abf4b,Knicks vs. Cavaliers,65,True,Cavaliers,1571.3491
+0xb7a04e484a4e0f4708f5b8ac0f26a08bdbc08c462cf25c1b15391252b5037320,"Bitcoin Up or Down - February 13, 3:00AM-3:15AM ET",65,True,Up,-250.5188
+0xc4be8639a1d60875b9960aab9086f3788a244dc7a5226d6ec107ce763ed51fe7,"Bitcoin Up or Down - February 15, 2:40PM-2:45PM ET",65,True,Down,-89.491
+0x3e71ca900a4a1d3a0f634fbbf23f3d6a1a7c655bc86f69e99feb2fdae47d040a,"Bitcoin Up or Down - February 17, 11:30PM-11:45PM ET",65,True,Up,-437.4455
+0x7b86befd4a806430c8e28049937be2caea22809a4a7a8338be80c0ee81e1db17,"Bitcoin Up or Down - February 15, 5:30AM-5:45AM ET",65,True,Up,81.0107
+0xaa06bec128ae6b2ed37073bdb953e37c74277a014f170fa89cf6dc038040c514,"Bitcoin Up or Down - February 18, 6:10PM-6:15PM ET",65,True,Up,36.6984
+0x50633681d060d8ab6a3f58c7cf32d7b887802b1a5ca0fc1b1de72e6093eef6cc,"Bitcoin Up or Down - February 15, 7:40AM-7:45AM ET",65,True,Up,26.1238
+0x1d130965d0047c043938aaabd3d0e27f09f758848b85430379e3634f9c7dc0f2,Hawks vs. 76ers,65,True,Hawks,735.7677
+0x02e85619e4632e187f8ec61199e2e80f4890eb249efe0b886b06a5a737c7cbd6,"Bitcoin Up or Down - February 12, 3:45PM-4:00PM ET",65,True,Down,-81.4201
+0x47e14bd59a83f6711480ed928fea0e485bfafb13b4292d1ed1df84bf7053d0ee,"Bitcoin Up or Down - February 14, 12:15AM-12:30AM ET",65,True,Up,-40.9048
+0xeb513fcc33044908745821a7b207361ed4dbc8d32ec2f7af35f9e637819f4837,"Bitcoin Up or Down - February 13, 12:00AM-12:15AM ET",65,True,Down,130.089
+0x4fad6940c3382b86623542b9930cc191f6d7b4ea6dd5f4680c5419f1326867fd,"Bitcoin Up or Down - February 23, 10:55PM-11:00PM ET",65,True,Down,-137.6459
+0x2830fef113e5ace63c27925976e9b7260e56cb60fdb8b88849bfae0ee34c64e3,"Bitcoin Up or Down - February 22, 2:15AM-2:30AM ET",65,True,Down,-13.9018
+0x07bb25076dbf7d611e95b2ac6adb7c2dd1a63d04b950168b9d5a9761b46e923c,Will Elon Musk post 320-339 tweets from February 20 to Febru,65,True,No,202.2153
+0x7a411fd92c891ea4a8ed9b64c146738040152ca03fb4e10e8fddd1b1de264f4e,"Bitcoin Up or Down - February 19, 10:40AM-10:45AM ET",65,True,Up,44.9542
+0xae5584fbb57f23c1c608d544b656f23d8bf12340cef70811cf31bb0cb4fc2115,Will GTA 6 cost $100+?,65,True,No,-59.7709
+0x56394d327b6fe79492324025bca19fedbc50be65ebdf58db1cec7d29e8dbe140,"Bitcoin Up or Down - February 13, 6:00PM-6:15PM ET",65,True,Down,-184.0437
+0x43c0971e4e9bdf6aa08adb6b08ace61f88bb9675c018323adde5ba28c71edd70,"Bitcoin Up or Down - February 18, 12:30PM-12:45PM ET",65,True,Down,-411.3104
+0x9dde2865d61deaeae5e1ed23c3cc2d3645f354f807d46d8108df293f8681b9a2,Will Norway win the most gold medals in the 2026 Winter Olym,64,True,Yes,-775.7297
+0xe9e2300e27d7a47a00968ed76b0249e4e72d4757f9477d7e31073ebf29736942,"Bitcoin Up or Down - February 12, 10:30AM-10:45AM ET",64,True,Down,-329.3872
+0xf597cf372ff196903a616f1b8e0cbc9ad33d66b2bdc1da9469dbfc74613303cc,Will Elon Musk post 260-279 tweets from February 20 to Febru,64,True,No,27.9653
+0x287920b320f4b2ca164f7e3066c8344c5c5d05182506d39207d3cea523bc9539,"Bitcoin Up or Down - February 15, 11:35AM-11:40AM ET",64,True,Down,133.2498
+0xb0ee0d0f6974908d2a05ca495dc930adc1145daff1fd6c3decadb4d6aced10e6,"Bitcoin Up or Down - February 14, 6:30PM-6:35PM ET",64,True,Up,142.3439
+0x37bf437ba067074bee170762a52b4e452fb0ea542536d3f7fa990306e06c2b20,"Will the price of Bitcoin be above $68,000 on February 18?",64,True,No,-487.5256
+0x9452134a37f2c6623143344b348871ebaff8986ee444b48dab6612f0352b78ac,"Bitcoin Up or Down - February 12, 2:30PM-2:45PM ET",64,True,Up,-39.5178
+0x878ea63d2d4fa22860d403b13395c1e4df465c7ca65e408c4bcd13d67319364e,"Bitcoin Up or Down - February 14, 7:30PM-7:45PM ET",64,True,Down,7.908
+0xb9d785d2a4feefa4ce312d92a321b551d2399fc182a5fc98650cbd46a738491b,"Bitcoin Up or Down - February 16, 7:45PM-8:00PM ET",64,True,Up,-468.8165
+0xea0424d6536d411f21d1ccb15939e42ce74e5feb1f0a0e87758843a131999f3b,"Bitcoin Up or Down - February 20, 8:05PM-8:10PM ET",64,True,Up,-440.7685
+0x2ed70722482aa43f7c29ca0778b06e107bad5ab224ede292cc96c155908d5d41,"Bitcoin Up or Down - February 23, 8:10PM-8:15PM ET",64,True,Down,-103.6214
+0x4abbc28ee5a65af88110086fd9f39defd717d952b6641b11dc2775c255831327,Will Elon Musk post 300-319 tweets from February 17 to Febru,64,True,No,80.4342
+0xb45dd089ef9782a4a0157a64a0a01d971b2641a58ad2e88dba4b7c450fb975ab,"Ethereum Up or Down - February 22, 5:30PM-5:45PM ET",64,True,Up,37.8465
+0x7f72e2af09127b4ffd41b7b83d2d6c92fd8238e638d1bfaacbbdae356b4bf720,"Will Bitcoin reach $85,000 in February?",64,True,No,-63.0421
+0xa9780723a10c3269cf54f0c68959d3bbced995312b627d38a75a748896167cde,T20 World Cup: Nepal vs Scotland (Game 1),64,True,Nepal,-1294.3978
+0xed7323844cb36e577c199c60bca387a258cb1386be23cebf5aa48e989e4f2828,"Bitcoin Up or Down - February 17, 9:35PM-9:40PM ET",64,True,Up,182.0774
+0x974ef76738e29884a1b8e05b17985deb9bb3089bd3211d490e9953ae29354cde,"Bitcoin Up or Down - February 12, 5:30PM-5:45PM ET",64,True,Up,-352.233
+0x8f1950f05055338da935385065c5c012a7d2f1ac2a96fe28590c01be98b21f31,"Bitcoin Up or Down - February 19, 2:15AM-2:30AM ET",64,True,Up,178.7486
+0x752ae08d059598eb1ca8483a4225e7af27dcfb63e394d0c1640ddd122cf2b989,"Bitcoin Up or Down - February 16, 12:00PM-12:15PM ET",64,True,Down,2.2711
+0x1e6601bf6d5335124742ff0df78305173c08bb58765720a790212c522af9bbd9,"Bitcoin Up or Down - February 16, 4:00PM-4:15PM ET",64,True,Up,13.0843
+0x1344bfea4542152ad164ad36a5587ba7a21ed57773bdb63847c1a4f08d8baa05,"Bitcoin Up or Down - February 18, 8:00AM-8:15AM ET",64,True,Up,-258.5162
+0x0d07facd46874bedbf0b6aa84da1a33f95a39152e399a1b9f596aea7532aa65a,"Bitcoin Up or Down - February 17, 12:00AM-12:15AM ET",64,True,Down,7.4392
+0xb6f71abbabb55d4c41ef7e6a6ef7b12882cc032ed712d23eb8e32790d748f6c3,"Bitcoin Up or Down - February 15, 11:45AM-11:50AM ET",64,True,Down,-64.7245
+0x7e7c54484b9aef34058bcee8c8465d7b57979c4cb3095c4fc668fd2164c329e6,"Bitcoin Up or Down - February 25, 7:45AM-8:00AM ET",64,True,Up,-225.0129
+0x7ad403c3508f8e3912940fd1a913f227591145ca0614074208e0b962d5fcc422,Will JD Vance win the 2028 US Presidential Election?,64,False,open,-13.1356
+0xb6d9148528fb13725c7525bf1297aff1239f0b1b70b632593a5fea9bae5a6208,"Bitcoin Up or Down - February 12, 9:45PM-10:00PM ET",64,True,Up,-89.7812
+0xf52972df1c58d0ab29b27d6eb5f316c564b18d4cf822e0e539207352f297cffe,"Bitcoin Up or Down - February 26, 10:45AM-11:00AM ET",64,True,Up,296.9763
+0x6ab1bb0011e597bc34e1f09dd36fd1d86279001bab0f53ea51a6ec386fb2a0b7,"Bitcoin Up or Down - February 21, 10:20AM-10:25AM ET",64,True,Down,-146.4622
+0x7aa8ac43a6e6c77922bc90db4650e28172a176e5646d24381e61f02fd7588dfd,"Bitcoin Up or Down - February 19, 1:00AM-1:15AM ET",63,True,Up,535.1492
+0x556b6f05283e99c52fc2b92801d39606e568fba0670e7b1730b4f5916a4b4498,"Bitcoin Up or Down - February 13, 11:45AM-12:00PM ET",63,True,Down,44.4037
+0x6021493e2bad8d1061f6a15317d5a26cb5519db4cdfdf0de9b1de2f7f790e7ab,"Bitcoin Up or Down - February 19, 9:40PM-9:45PM ET",63,True,Up,-296.9027
+0x75d975fbacfaed8da75f5f99ba7329dc0655ed929ed440a58e961a9318079cb9,Heat vs. 76ers,63,True,76ers,1027.1438
